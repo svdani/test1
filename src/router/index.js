@@ -22,14 +22,19 @@ const router = createRouter({
       component: () => import('../views/DeletePlayerView.vue')
     },
     {
-      path: '/attackManagement',
-      name: 'attackManagement',
-      component: () => import('../views/AttackManagement.vue')
-    },
-    {
       path: '/joinView',
       name: 'joinView',
       component: () => import('../views/JoinBattleView.vue')
+    },
+    {
+      path: '/playerInfo',
+      name: 'playerInfo',
+      component: () => import('../views/PlayerInfo.vue')
+    },
+    {
+      path: '/attackManagement',
+      name: 'attackManagement',
+      component: () => import('../views/AttackManagement.vue')
     }
   ]
 })

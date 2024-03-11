@@ -19,8 +19,9 @@ import HelloWorld from './components/HelloWorld.vue'
         <li><a href="#">Player Management</a>
           <ul>
             <li><RouterLink to="/createPlayer">Create Player</RouterLink></li>
-            <li><RouterLink to="/playerManagement">Player Management</RouterLink></li>
-            <li><RouterLink to="/playerManagement">Player Management</RouterLink></li>
+            <li><RouterLink to="/joinView">Join</RouterLink></li>
+            <li><RouterLink to="/playerInfo">Player Info</RouterLink></li>
+            <li><RouterLink to="/deletePlayer">Player Management</RouterLink></li>
           </ul>
         </li>
         <li><a href="#">Enlace 2</a>
