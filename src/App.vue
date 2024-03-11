@@ -10,12 +10,61 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
+
+
+      <!-- start nav -->
+      <nav id="menu">
+      <!-- start menu -->
+      <ul>
+        <li><a href="#">Player Management</a>
+          <ul>
+            <li><RouterLink to="/createPlayer">Create Player</RouterLink></li>
+            <li><RouterLink to="/playerManagement">Player Management</RouterLink></li>
+            <li><RouterLink to="/playerManagement">Player Management</RouterLink></li>
+          </ul>
+        </li>
+        <li><a href="#">Enlace 2</a>
+          <ul>
+            <li><a href="#">Enlace 2.1</a></li>
+            <li><a href="#">Enlace 2.2</a></li>
+            <li><a href="#">Enlace 2.3</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Enlace 3</a>
+          <ul>
+            <li><a href="#">Enlace 2.1</a></li>
+            <li><a href="#">Enlace 2.2</a></li>
+            <li><a href="#">Enlace 2.3</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Enlace 4</a>
+          <ul>
+            <li><a href="#">Enlace 2.1</a></li>
+            <li><a href="#">Enlace 2.2</a></li>
+            <li><a href="#">Enlace 2.3</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Enlace 5</a>
+          <ul>
+            <li><a href="#">Enlace 2.1</a></li>
+            <li><a href="#">Enlace 2.2</a></li>
+            <li><a href="#">Enlace 2.3</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- end menu -->
+      </nav>
+      <!-- end nav -->
+      
+
+      <!--
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/playerManagement">Player Management</RouterLink>
         <RouterLink to="/attackManagement">Attack Management</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
+      -->
     </div>
   </header>
 
