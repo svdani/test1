@@ -12,9 +12,14 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/playerManagement',
-      name: 'playerManagement',
-      component: () => import('../views/PlayerManager.vue')
+      path: '/createPlayer',
+      name: 'createPlayer',
+      component: () => import('../views/CreatePlayerView.vue')
+    },
+    {
+      path: '/deletePlayer',
+      name: 'deletePlayer',
+      component: () => import('../views/DeletePlayerView.vue')
     },
     {
       path: '/attackManagement',
@@ -22,12 +27,9 @@ const router = createRouter({
       component: () => import('../views/AttackManagement.vue')
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/PlayerManager.vue')
+      path: '/joinView',
+      name: 'joinView',
+      component: () => import('../views/JoinBattleView.vue')
     }
   ]
 })
