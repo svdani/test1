@@ -1,9 +1,4 @@
 <template>
-  <div style="background-color: red; width: 1000px;"> </div>
-  Home View
+Home View  
 </template>
 
-
-<script>
-
-</script>

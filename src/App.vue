@@ -17,7 +17,10 @@ const toggleAbout = () => {
 defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
 </script>
 
-<template>
+<template>      
+<header >
+  <img src="@/assets/images/imgHeader.jpeg" alt="Imagen Menu">
+
   <nav id="app">
     <!-- Botón de hamburguesa -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -60,4 +63,10 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
       </ul>
     </nav>
   </nav>
+
+</header>
+<section style="padding: 220px 200px" >
+  <RouterView />
+</section>
+
 </template>
