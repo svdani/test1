@@ -1,10 +1,12 @@
 #app{
     margin: 0;
     width: max-content;
+    height: 100vh; /* Altura del 100% del viewport */
 }
 
 /* Estilos para el botón de hamburguesa */
 .burger-menu {
+    margin-left: 15px;
     font-size: xxx-large;
 }
 
