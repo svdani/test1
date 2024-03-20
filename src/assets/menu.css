@@ -39,7 +39,11 @@
 }
 
 .menu li {
+  color: black;
   padding: 10px;
+}
+.menu li:hover {
+  background-color: #E4B201;
 }
 
 .menu a {
@@ -68,4 +72,12 @@
   .menu ul li:hover ul {
     
     display: block; /* Mostrar las subopciones al pasar el ratón sobre la opción principal */
+  }
+  .menu ul li ul li:hover{
+    
+    background-color: #b48e02;
+  }
+  
+  li {
+    width: 100%;
   }
