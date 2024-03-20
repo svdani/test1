@@ -1,12 +1,24 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
 
 
+import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
+
+const isMenuOpen = ref(false);
+const isAboutOpen = ref(false);
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+const toggleAbout = () => {
+  isAboutOpen.value = !isAboutOpen.value;
+};
 </script>
 
 <template>
 
-  <div id="app">
+  <nav id="app">
     
 
     <!-- Botón de hamburguesa -->
@@ -19,26 +31,17 @@ import { RouterLink, RouterView } from 'vue-router'
       <!-- <button class="close-button" @click="closeMenu">Cerrar</button>-->
       <ul>
         <li><RouterLink to="/">Home</RouterLink></li>
-        <li><RouterLink to="/about">About</RouterLink></li>    
+        <li>
+          
+          <span @click="toggleAbout">About</span> <!-- Opción principal con subopciones -->
+          <ul v-if="isAboutOpen">
+            <li><RouterLink to="/about/company">Company</RouterLink></li>
+            <li><RouterLink to="/about/team">Team</RouterLink></li>
+          </ul>
+            
+        </li>   
       </ul>
     </nav>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      isMenuOpen: false
-    };
-  },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-    },
-    closeMenu() {
-      this.isMenuOpen = false;
-    }
-  }
-};
-</script>
