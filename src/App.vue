@@ -50,7 +50,7 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
         <li>
           <span @click="toggleAbout">Game Adimistration</span> <!-- Opción principal con subopciones -->
           <ul v-if="isSubMenuOpen">
-            <li><RouterLink to="/createAgameCreation">Create Game</RouterLink></li>
+            <li><RouterLink to="/gameCreation">Create Game</RouterLink></li>
             <li><RouterLink to="/gameAvalible">Avaible Game</RouterLink></li>
             <li><RouterLink to="/gameFinder">Game Finder</RouterLink></li>
             <li><RouterLink to="/gameRecord">Game Record</RouterLink></li>
