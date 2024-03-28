@@ -2,18 +2,18 @@
     <div id="app">
         <div class="container">
             <div class="input-group">
-                <label for="columns">Number of Columns:</label>
-                <input type="number" id="columns" min="1">
+                <div class="bubble-box">Number of Columns:</div>
+                <input type="text" id="columns">
             </div>
             <div class="input-group">
-                <label for="rows">Number of Rows:</label>
-                <input type="number" id="rows" min="1">
+                <div class="bubble-box">Number of Rows:</div>
+                <input type="text" id="rows">
             </div>
             <div class="input-group">
-                <label for="playerHP">Player HP:</label>
-                <input type="number" id="playerHP" min="1">
+                <div class="bubble-box">Player HP:</div>
+                <input type="text" id="playerHP">
             </div>
-            <button class="button" >Start Game</button>
+            <button class="button">Start Game</button>
         </div>
     </div>
 </template>
@@ -28,7 +28,7 @@
         max-width: 600px;
         margin: 20px auto;
         padding: 20px;
-        border: 1px solid #ccc;
+        border: none;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         display: flex;
@@ -40,17 +40,26 @@
         width: calc(33.33% - 20px); /* Adjust width here */
         margin-bottom: 15px;
     }
+    .bubble-box {
+        padding: 8px;
+        background-color: #ccc;
+        color: #333;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-right: 10px; /* Add space between the bubble and text */
+        font-size: 14px; /* Adjust font size here */
+    }
     .input-group label {
         display: block;
-        font-weight: bold;
         margin-bottom: 5px;
     }
-    .input-group input[type="number"] {
-        width: 100%;
+    .input-group input[type="text"] {
+        width: calc(100% - 10px); /* Adjust width here */
         padding: 8px;
-        border: 1px solid #ccc;
+        border: none;
         border-radius: 5px;
         box-sizing: border-box;
+        margin-top: 5px; /* Add space between bubble and input box */
     }
     .button {
         width: calc(100% - 20px); /* Adjust width here */
