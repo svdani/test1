@@ -5,6 +5,7 @@
     <main class="content">
         <flex class="flex-container">
             <flex class="formControl">
+                <img src="@/assets/images/iconUser.png" alt="profile"/>
                 <input type="file" class="form-control-file" id="imageFile">
             </flex>
         </flex>
@@ -17,7 +18,7 @@
     <footer class="content">
         <flex class="flex-container">
             <flex class="formControl">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn success">Submit</button>
             </flex>
         </flex>
     </footer>
@@ -27,7 +28,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px;
 }
 
 .formControl {
