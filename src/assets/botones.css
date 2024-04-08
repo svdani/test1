@@ -7,11 +7,15 @@
     border-radius: 5px;
 }
 
+.btn-right {
+    float: right;
+    margin: 1rem;
+}
+
 .success {
     background-color: #FFC700;
 }
+
 .btn:hover {
-
     background-color: #E4B201;
-
 }
