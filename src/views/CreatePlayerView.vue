@@ -1,25 +1,25 @@
 <template>
-    <header>
+    <header class="content">
         <h1>Player Creation</h1>
     </header>
-    <main>
-        <div class="flex-container">
-            <div class="formControl">
+    <main class="content">
+        <flex class="flex-container">
+            <flex class="formControl">
                 <input type="file" class="form-control-file" id="imageFile">
-            </div>
-        </div>
-        <div class="flex-container">
-            <div class="formControl">
+            </flex>
+        </flex>
+        <flex class="flex-container">
+            <flex class="formControl">
                 <input type="text" class="form-control" placeholder="Player name">
-            </div>
-        </div>
+            </flex>
+        </flex>
     </main>
-    <footer>
-        <div class="flex-container">
-            <div class="formControl">
+    <footer class="content">
+        <flex class="flex-container">
+            <flex class="formControl">
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
+            </flex>
+        </flex>
     </footer>
 </template>
 <style>
@@ -36,5 +36,8 @@
 
 .form-control, .form-control-file, .btn {
     margin-top: 10px;
+}
+.content{
+    padding-left:  2%;
 }
 </style>
