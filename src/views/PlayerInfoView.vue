@@ -21,33 +21,4 @@
 </template>
 
 
-<style>
 
-    progress {
-        width: 80%;
-        height: 3rem;
-    }
-
-    label {
-        padding-right: 10px;
-        font-size: 1rem;
-    }
-
-    .caja_gris{
-        margin:1rem;
-        padding: 1rem;
-        border-radius: 10px;
-        background-color: rgba(128, 128, 128, 0.5); 
-        display: flex;
-
-    }
-
-    .imagen-circular {
-        width: 5rem;
-        height: 5rem;
-        object-fit: cover;
-        border-radius: 50%;
-    }
-
-
-  </style>

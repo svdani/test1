@@ -1,6 +1,8 @@
 @import './base.css';
 @import './menu.css';
 @import './botones.css';
+@import './cajas.css';
+
 
 #app {
   /*max-width: 1280px;*/
