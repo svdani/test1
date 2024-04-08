@@ -1,6 +1,12 @@
+<script>
+    function name() {
+        alert("Hola???");
+    }
+</script>
+
 <template>
-    <a class="btn success" onclick="name();">??</a>
-    <button type="submit" class="buttonlooks">Create</button>
+
+    <button class="btn success" type="submit" onclick="alert('Hola???')">Create</button>
     <article class="caja_gris" >
 
         <img class="imagen-circular" src="https://static.vecteezy.com/system/resources/previews/002/275/847/non_2x/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg" alt="Imagen cuadrada">
@@ -43,27 +49,5 @@
         border-radius: 50%;
     }
 
-    .btn{
-        border: none;
-        padding: 14px 28px;
-        font-size: 16px;
-        cursor: pointer;
-        display: inline-block;
-        border-radius: 5px;
-    }
 
-    .success {
-        background-color: #FFC700;
-    }
-    .btn:hover {
-
-        background-color: ;
-
-    }
   </style>
-  <script>
-    function name() {
-        alert("Hola???");
-    }
-
-</script>
