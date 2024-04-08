@@ -38,6 +38,8 @@
     margin-top: 10px;
 }
 .content{
-    padding-left:  2%;
+    width: 100%;
+    text-align: left;
+    margin-top: 2%;
 }
 </style>
