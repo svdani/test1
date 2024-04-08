@@ -18,10 +18,10 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
 </script>
 
 <template>      
-<header >
+<header  >
   <img src="@/assets/images/imgHeader.jpeg" alt="Imagen Menu">
 
-  <nav id="app">
+  <nav id="menuHamburger">
     <!-- Botón de hamburguesa -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <span class="burger-menu material-symbols-outlined" @click="toggleMenu">menu</span>
@@ -65,7 +65,7 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
   </nav>
 
 </header>
-<section style="padding: 220px 200px" >
+<section style="padding: 0px 220px" >
   <RouterView />
 </section>
 

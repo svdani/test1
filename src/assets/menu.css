@@ -1,8 +1,9 @@
 header{
-  position: absolute;
+  width: 100%;
 }
-#app{
-    margin: 0;
+#menuHamburger{
+  position: absolute;
+    margin: 0px;
     width: max-content;
     height: 100vh; /* Altura del 100% del viewport */
 }
