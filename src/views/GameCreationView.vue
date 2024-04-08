@@ -1,21 +1,21 @@
 <template>
-    <div id="app">
-        <div class="container">
-            <div class="input-group">
+        <main class="container">
+            <form>
+                <div class="input-group">
                 <div class="bubble-box">Number of Columns:</div>
                 <input type="text" id="columns">
-            </div>
-            <div class="input-group">
+                </div>
+                <div class="input-group">
                 <div class="bubble-box">Number of Rows:</div>
                 <input type="text" id="rows">
-            </div>
-            <div class="input-group">
-                <div class="bubble-box">Player HP:</div>
-                <input type="text" id="playerHP">
-            </div>
-            <button class="button">Start Game</button>
-        </div>
-    </div>
+                </div>
+                <div class="input-group">
+                    <div class="bubble-box">Player HP:</div>
+                    <input type="text" id="playerHP">
+                </div>
+                <button class="button">Start Game</button>
+            </form>
+        </main>
 </template>
 
 <style>
