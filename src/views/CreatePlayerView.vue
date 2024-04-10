@@ -1,27 +1,17 @@
 <template>
-    <header class="content">
-        <h1>Player Creation</h1>
-    </header>
     <main class="content">
-        <flex class="flex-container">
-            <flex class="formControl">
-                <img src="@/assets/images/iconUser.png" alt="profile"/>
+        <form>
+            <div class="formControl">
                 <input type="file" class="form-control-file" id="imageFile">
-            </flex>
-        </flex>
-        <flex class="flex-container">
-            <flex class="formControl">
+            </div>
+            <div class="formControl">
                 <input type="text" class="form-control" placeholder="Player name">
-            </flex>
-        </flex>
-    </main>
-    <footer class="content">
-        <flex class="flex-container">
-            <flex class="formControl">
+            </div>
+            <div class="formControl">
                 <button type="submit" class="btn success">Submit</button>
-            </flex>
-        </flex>
-    </footer>
+            </div>
+        </form>
+    </main>
 </template>
 <style>
 .flex-container {
@@ -32,10 +22,12 @@
 
 .formControl {
     margin: 10px;
+    text-align: center;
 }
 
 .form-control, .form-control-file, .btn {
     margin-top: 10px;
+    text-align: center;
 }
 .content{
     width: 100%;
