@@ -1,6 +1,6 @@
 <template>
     <section style="">
-        <a href="PlayerGameHistoryView.vue">
+        <a href="/src/views/PlayerGameHistoryView">
             <button class="btn success btn-right" type="submit">View Player history</button>
         </a>
         

@@ -15,6 +15,7 @@
 </template>
 <style>
 
+
   .marginmaker1{
     margin-top: 10%;
   }
