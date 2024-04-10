@@ -90,7 +90,23 @@ const router = createRouter({
       path: '/playerGameHistory',
       name: 'playerGameHistory',
       component: () => import('../views/PlayerGameHistoryView.vue')
-    }
+    },
+    {
+      path: '/playerStatistics',
+      name: 'playerStatistics',
+      component: () => import('../views/PlayerStatisticsView.vue')
+    },
+    {
+      path: '/gameLogs',
+      name: 'gameLogs',
+      component: () => import('../views/GameLogsView.vue')
+    },
+    {
+      path: '/gameReplay',
+      name: 'gameReplay',
+      component: () => import('../views/GameReplayView.vue')
+    },
+
   ]
 })
 
