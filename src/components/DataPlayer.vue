@@ -1,6 +1,9 @@
 <template>
     <section style="">
-        <button class="btn success btn-right" type="submit" onclick="">View Player history</button>
+        <a href="PlayerGameHistoryView.vue">
+            <button class="btn success btn-right" type="submit">View Player history</button>
+        </a>
+        
         <article class="caja_gris" style="width: 95%;" >
 
             <img class="imagen-circular" src="https://static.vecteezy.com/system/resources/previews/002/275/847/non_2x/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg" alt="Imagen cuadrada">
