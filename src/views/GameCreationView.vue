@@ -46,8 +46,14 @@
         color: #333;
         border-radius: 5px;
         font-weight: bold;
-        margin-right: 10px; /* Add space between the bubble and text */
-        font-size: 14px; /* Adjust font size here */
+        display: inline-block; /* Make the bubble inline block */
+        white-space: nowrap; /* Prevent text from wrapping */
+        font-size: 14px;
+        margin-right: 10px;
+        border: 1px solid #999;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        min-width: 140px; /* Minimum width of the bubble */
     }
     .input-group label {
         display: block;
