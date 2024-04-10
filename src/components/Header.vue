@@ -1,3 +1,3 @@
 <template>
-header
+    <p>Header</p>
 </template>
