@@ -1,8 +1,6 @@
 <template>
     <section style="">
-        <a href="PlayerGameHistoryView.vue">
-            <button class="btn success btn-right" type="submit">View Player history</button>
-        </a>
+        <button class="btn success btn-right" type="submit" @click="$router.push('/playerGameHistory')">View Player history</button>
         
         <article class="caja_gris" style="width: 95%;" >
 
