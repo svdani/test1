@@ -3,13 +3,13 @@
     <form>
       
       <div class="flexaligner2 marginmaker2">
-        <button type="submit" class="buttonlooks success">Statistics</button>
+        <button type="submit" class="buttonlooks btn success">Statistics</button>
       </div>
       <div class="flexaligner2 marginmaker2">
-        <button type="submit" class="buttonlooks success">Game Logs</button>
+        <button type="submit" class="buttonlooks btn success">Game Logs</button>
       </div>
       <div class="flexaligner2 marginmaker2">
-        <button type="submit" class="buttonlooks success">Game Replay</button>
+        <button type="submit" class="buttonlooks btn success">Game Replay</button>
       </div>
     </form>
 </template>
