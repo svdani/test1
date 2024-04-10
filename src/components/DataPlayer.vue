@@ -1,6 +1,6 @@
 <template>
     <section style="">
-        <button class="btn success btn-right" type="submit" @click="$router.push('/PlayerGameHistoryView')">View Player history</button>
+        <button class="btn success btn-right" type="submit" @click="$router.push('/playerGameHistory')">View Player history</button>
         
         <article class="caja_gris" style="width: 95%;" >
 
