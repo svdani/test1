@@ -2,17 +2,20 @@
 <template>
         <main >
             <DataPlayer/>
-        </main>
-          
-  </template>
+            <Equipment/>
+
+        </main>          
+</template>
   
   <script>
   import DataPlayer from '../components/DataPlayer.vue';
+  import Equipment from '../components/Equipment.vue';
   
   export default {
     name: 'App',
     components: {
-        DataPlayer
+        DataPlayer,
+        Equipment
     }
   }
   </script>

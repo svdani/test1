@@ -63,10 +63,10 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
       </ul>
     </nav>
   </nav>
-
 </header>
-<section style="padding: 0px 220px" >
+
+<div style="padding: 0px 220px" >
   <RouterView />
-</section>
+</div>
 
 </template>
