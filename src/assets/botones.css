@@ -50,3 +50,8 @@
 .button_overlay:hover {
     background-color: red; /* Color de fondo del botón */
 }
+
+.btn-join{
+
+    align-items: right;
+}
