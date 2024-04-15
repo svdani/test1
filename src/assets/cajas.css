@@ -76,4 +76,12 @@ label {
     width: 300px;
 }
 
+.caja_gris_joinable{
+    
+    flex-direction: column;
+}
 
+.caja_blanca_joinable{
+    width: 900px;
+
+}
