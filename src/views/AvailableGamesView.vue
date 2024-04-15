@@ -1,5 +1,5 @@
 <template>
-    <div class="caja_gris">
+    <div class="caja_gris caja_gris_joinable">
         <h3>Joinable Games</h3>
         <article class="caja_blanca caja_blanca_joinable">
             <p>Available Game 1</p>
