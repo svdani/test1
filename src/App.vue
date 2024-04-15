@@ -13,13 +13,13 @@ const toggleAbout = () => {
   isSubMenuOpen.value = !isSubMenuOpen.value;
 };
 
-// Exponer las variables y métodos al template
+// Expose variables and methods to the template
 defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
 </script>
 
 <template>      
 <header  >
-  <img src="@/assets/images/battle_arena_logo.png" alt="Imagen Menu">
+  <img src="@/assets/images/battle_arena_logo.png" alt="Imagen Menu" style="margin: auto; display: block;">
 
   <nav id="menuHamburger">
     <!-- Botón de hamburguesa -->
