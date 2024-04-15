@@ -1,5 +1,5 @@
 <template>
-    <article class="caja_blanca">
+    <article class="caja_blanca caja_vertical_center">
         <section style="display: block;">
             <h4>Atack name</h4>
             <h4>X</h4>

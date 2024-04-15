@@ -45,7 +45,12 @@ label {
 .caja_bagpack{
     display: flex;
     justify-content: space-evenly;
+    
     flex-wrap: wrap;
+}
+.caja_vertical_center{
+    display: flex;
+    align-items: center;
 }
 
 .imagen-circular {
@@ -62,6 +67,10 @@ label {
     margin-left: 10px;
 }
 
+.caja_bagpack{
+    justify-content: space-around;
+    width: 400px;
+}
 
 .caja_statistics{
     width: 300px;

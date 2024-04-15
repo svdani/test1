@@ -1,6 +1,6 @@
 <template>
     <main style="display: flex;flex-direction: column;">
-        <h3 style="margin: auto; color: black;">Equipment</h3>
+        <h3 style="margin: auto; color: white;">Bagpack</h3>
         <section class="caja_gris caja_bagpack" style="width: 95%;" >
 
             <ItemAttackBag/>

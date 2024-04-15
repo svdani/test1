@@ -19,7 +19,7 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
 
 <template>      
 <header  >
-  <img src="@/assets/images/imgHeader.jpeg" alt="Imagen Menu">
+  <img src="@/assets/images/battle_arena_logo.png" alt="Imagen Menu">
 
   <nav id="menuHamburger">
     <!-- Botón de hamburguesa -->

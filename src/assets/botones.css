@@ -13,6 +13,7 @@
     cursor: pointer;
     display: inline-block;
     border-radius: 5px;
+    height: fit-content;
 }
 
 
@@ -25,7 +26,8 @@
     background-color: #FFC700;
 }
 
-.btn:hover {
+.btn:hover,
+.btn-small:hover {
     background-color: #E4B201;
 }
 
@@ -39,8 +41,8 @@
     background-color: gray; /* Color de fondo del botón */
     border-radius: 50%; /* Forma redonda del botón */
     margin-left: auto; /* Empuja el botón hacia la derecha */
-    top: 50%; /* Alinea el botón en el centro verticalmente */
-    transform: translateY(-50%); /* Corrige la posición vertical del botón */
+    /*top: 50%; /* Alinea el botón en el centro verticalmente */
+    /*transform: translateY(-50%); /* Corrige la posición vertical del botón */
     z-index: 1; /* Coloca el botón por encima del contenido de la caja */
     border: black 5px solid;
 }
