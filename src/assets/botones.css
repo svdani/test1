@@ -6,6 +6,15 @@
     display: inline-block;
     border-radius: 5px;
 }
+.btn-small{
+    border: none;
+    padding: 10px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+}
+
 
 .btn-right {
     float: right;
@@ -18,4 +27,24 @@
 
 .btn:hover {
     background-color: #E4B201;
+}
+
+
+.button_overlay {
+    padding: 4px;
+    position: relative; /* Cambiado a relative */
+    right: -135px; /* Ajusta la mitad del ancho del botón para que esté fuera por el lado derecho */
+    width: 50px; /* Ajusta el ancho del botón */
+    height: 50px; /* Ajusta la altura del botón */
+    background-color: gray; /* Color de fondo del botón */
+    border-radius: 50%; /* Forma redonda del botón */
+    margin-left: auto; /* Empuja el botón hacia la derecha */
+    top: 50%; /* Alinea el botón en el centro verticalmente */
+    transform: translateY(-50%); /* Corrige la posición vertical del botón */
+    z-index: 1; /* Coloca el botón por encima del contenido de la caja */
+    border: black 5px solid;
+}
+
+.button_overlay:hover {
+    background-color: red; /* Color de fondo del botón */
 }
