@@ -70,9 +70,9 @@ const router = createRouter({
     }
     ,
     {
-      path: '/gameAvalible',
-      name: 'gameAvalible',
-      component: () => import('../views/AttackManagement.vue')
+      path: '/gameAvailable',
+      name: 'gameAvailable',
+      component: () => import('../views/AvailableGamesView.vue')
     }
     ,
     {
