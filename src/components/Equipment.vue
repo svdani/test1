@@ -1,11 +1,24 @@
 <template>
     <main style="display: flex;flex-direction: column;">
-        <h3>Equipment</h3>
-        <section class="caja_gris" style="width: 95%;" >
-            <article class="caja_gris">
+        <h3 style="margin: auto; color: black;">Equipment</h3>
+        <section class="caja_gris caja_equipment" style="width: 95%;" >
 
-            </article>
+            <ItemAttack/>
+            <ItemAttack/>
+            <ItemAttack/>
         
         </section>
     </main>
 </template>
+
+<script>
+  import ItemAttack from './item-attack.vue';
+
+  
+  export default {
+    name: 'App',
+    components: {
+        ItemAttack
+    }
+  }
+  </script>

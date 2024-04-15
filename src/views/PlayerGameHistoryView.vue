@@ -3,13 +3,13 @@
     <form>
       
       <div class="flexaligner2 marginmaker2">
-        <button type="submit" class="buttonlooks btn success">Statistics</button>
+        <button type="submit" class="buttonlooks btn success" @click="$router.push('/playerStatistics')">Statistics</button>
       </div>
       <div class="flexaligner2 marginmaker2">
-        <button type="submit" class="buttonlooks btn success">Game Logs</button>
+        <button type="submit" class="buttonlooks btn success" @click="$router.push('/gameLogs')">Game Logs</button>
       </div>
       <div class="flexaligner2 marginmaker2">
-        <button type="submit" class="buttonlooks btn success">Game Replay</button>
+        <button type="submit" class="buttonlooks btn success" @click="$router.push('/gameReplay')">Game Replay</button>
       </div>
     </form>
 </template>
