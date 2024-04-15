@@ -105,6 +105,11 @@ const router = createRouter({
       path: '/gameReplay',
       name: 'gameReplay',
       component: () => import('../views/GameReplayView.vue')
+    },
+    {
+      path: '/gameFinder',
+      name: 'gameFinder',
+      component: () => import('../views/GameFinderView.vue')
     }
 
   ]
