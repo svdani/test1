@@ -1,21 +1,15 @@
 <template>
-    
-    <form>
-      
-      <div class="flexaligner2 marginmaker2">
-        <button type="submit" class="buttonlooks btn success" @click="$router.push('/playerStatistics')">Statistics</button>
-      </div>
-      <div class="flexaligner2 marginmaker2">
-        <button type="submit" class="buttonlooks btn success" @click="$router.push('/gameLogs')">Game Logs</button>
-      </div>
-      <div class="flexaligner2 marginmaker2">
-        <button type="submit" class="buttonlooks btn success" @click="$router.push('/gameReplay')">Game Replay</button>
-      </div>
-    </form>
+    <div class="flexaligner2 marginmaker2">
+      <button type="submit" class="btn success btn-right" @click="$router.push('/playerStatistics')">Statistics</button>
+    </div>
+    <div class="flexaligner2 marginmaker2">
+      <button type="submit" class="buttonlooks btn success" @click="$router.push('/gameLogs')">Game Logs</button>
+    </div>
+    <div class="flexaligner2 marginmaker2">
+      <button type="submit" class="buttonlooks btn success" @click="$router.push('/gameReplay')">Game Replay</button>
+    </div>
 </template>
 <style>
-
-
   .marginmaker1{
     margin-top: 10%;
   }

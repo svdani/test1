@@ -99,13 +99,13 @@ const router = createRouter({
     {
       path: '/gameLogs',
       name: 'gameLogs',
-      component: () => import('../views/GameLogsView.vue')
+      playerStatisticsomponent: () => import('../views/GameLogsView.vue')
     },
     {
       path: '/gameReplay',
       name: 'gameReplay',
       component: () => import('../views/GameReplayView.vue')
-    },
+    }
 
   ]
 })
