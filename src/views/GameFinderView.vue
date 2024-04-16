@@ -1,57 +1,70 @@
 <template>
-    <section>
-        <label for="site-search">Search the site:</label>
-        <input type="search" id="site-search" name="q" />
-        <button>Search</button>
-        <fieldset>
-            <legend>Choose game status:</legend>
-            <div>
-                <input type="checkbox" id="scales" name="scales" checked />
-                <label for="scales">Finished</label>
-            </div>
-            <div>
-                <input type="checkbox" id="horns" name="horns" />
-                <label for="horns">Joinable</label>
-            </div>
-            <div>
-                <input type="checkbox" id="horns" name="horns" />
-                <label for="horns">In Progress</label>
-            </div>
-        </fieldset>
+    <section class="left-align">
+        <article style="display: flex; justify-content: flex-end;">
+            <input type="search" id="site-search" name="q" />
+            <button>Search</button>
+        </article>
     </section>
-    <div class="caja_gris">
-        <article class="caja_blanca">
-            <p>Player Name:</p>
+    <section class="right-align">
+        <article style="display: flex; justify-content: flex-end; align-items: center;">
+            <label for="scales">Finished</label>
+            <input type="checkbox" id="finished"/>
         </article>
-        <article class="caja_blanca">
-            <p>Name</p>
+        <article style="display: flex; justify-content: flex-end; align-items: center;">
+            <label for="horns">Joinable</label>
+            <input type="checkbox" id="joinable"/>
         </article>
-        <article class="caja_blanca" >
-            <p>Games:</p>
+        <article style="display: flex; justify-content: flex-end; align-items: center;">
+            <label for="horns">In Progress</label>
+            <input type="checkbox" id="inProgress"/>
         </article>
-        <article class="caja_blanca" >
-            <p>20</p>
+    </section>
+    <div class="caja_gris" style="display: flex; flex-wrap: wrap;">
+        <article style="flex: 50%; display: flex;">
+            <section class="caja_blanca caja_blanca_finder">
+                <h3>Game</h3>
+            </section>
         </article>
-        <article class="caja_blanca" >
-            <p>Wins:</p>
+        <article style="flex: 50%; display: flex;">
+            <section class="caja_blanca caja_blanca_finder">
+                <h3>Status</h3>
+            </section>
         </article>
-        <article class="caja_blanca" >
-            <p>15</p>
+        <article style="flex: 50%; display: flex;">
+            <section class="caja_blanca caja_blanca_finder">
+                <p>Game 1</p>
+            </section>
         </article>
-        <article class="caja_blanca" >
-            <p>Losses:</p>
+        <article style="flex: 50%; display: flex;">
+            <section class="caja_blanca caja_blanca_finder">
+                <p>Joinable</p>
+            </section>
         </article>
-        <article class="caja_blanca" >
-            <p>5</p>
+        <article style="flex: 50%; display: flex;">
+            <section class="caja_blanca caja_blanca_finder">
+                <p>Game 2</p>
+            </section>
+        </article>
+        <article style="flex: 50%; display: flex;">
+            <section class="caja_blanca caja_blanca_finder">
+                <p>In Progress</p>
+            </section>
+        </article>
+        <article style="flex: 50%; display: flex;">
+            <section class="caja_blanca caja_blanca_finder">
+                <p>Game 3</p>
+            </section>
+        </article>
+        <article style="flex: 1 1 50%; display: flex;">
+            <section class="caja_blanca caja_blanca_finder">
+                <p>Finished</p>
+            </section>
         </article>
     </div>
 </template>
 <style>
 label {
   display: block;
-  font:
-    1rem 'Fira Sans',
-    sans-serif;
 }
 
 input,
