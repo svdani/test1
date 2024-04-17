@@ -1,8 +1,10 @@
 <template>
     <section class="left-align">
         <article style="display: flex; justify-content: flex-end;">
-            <input type="search" id="site-search" name="q" />
-            <button>Search</button>
+            <div style="margin-top: 25px;">
+                <input type="search" id="site-search"/>
+            </div>
+            <button class="btn success btn-right">Search</button>
         </article>
     </section>
     <section class="right-align">
@@ -20,43 +22,43 @@
         </article>
     </section>
     <div class="caja_gris" style="display: flex; flex-wrap: wrap;">
-        <article style="flex: 50%; display: flex;">
-            <section class="caja_blanca caja_blanca_finder">
+        <article  class="caja_blanca caja_blanca_finder">
+            <section>
                 <h3>Game</h3>
             </section>
         </article>
-        <article style="flex: 50%; display: flex;">
-            <section class="caja_blanca caja_blanca_finder">
+        <article  class="caja_blanca caja_blanca_finder">
+            <section>
                 <h3>Status</h3>
             </section>
         </article>
-        <article style="flex: 50%; display: flex;">
-            <section class="caja_blanca caja_blanca_finder">
+        <article  class="caja_blanca caja_blanca_finder">
+            <section>
                 <p>Game 1</p>
             </section>
         </article>
-        <article style="flex: 50%; display: flex;">
-            <section class="caja_blanca caja_blanca_finder">
+        <article  class="caja_blanca caja_blanca_finder">
+            <section>
                 <p>Joinable</p>
             </section>
         </article>
-        <article style="flex: 50%; display: flex;">
-            <section class="caja_blanca caja_blanca_finder">
+        <article class="caja_blanca caja_blanca_finder">
+            <section>
                 <p>Game 2</p>
             </section>
         </article>
-        <article style="flex: 50%; display: flex;">
-            <section class="caja_blanca caja_blanca_finder">
+        <article  class="caja_blanca caja_blanca_finder">
+            <section>
                 <p>In Progress</p>
             </section>
         </article>
-        <article style="flex: 50%; display: flex;">
-            <section class="caja_blanca caja_blanca_finder">
+        <article  class="caja_blanca caja_blanca_finder">
+            <section>
                 <p>Game 3</p>
             </section>
         </article>
-        <article style="flex: 1 1 50%; display: flex;">
-            <section class="caja_blanca caja_blanca_finder">
+        <article class="caja_blanca caja_blanca_finder">
+            <section>
                 <p>Finished</p>
             </section>
         </article>

@@ -86,8 +86,9 @@ label {
 
 }
 .caja_blanca_finder{
-    width: 600px;
+    width: 45%;
     justify-content: center;
+    display: flex;
 }
 
 .form_centrado_izquierdo{

@@ -1,6 +1,25 @@
 <template>
     <div class="caja_gris caja_gris_joinable">
-      <h3>Joinable Games</h3>
+        <div style="display: flex; justify-content: space-between;">
+            <section class="left-align">
+                <article style="display: flex;">
+                    <div style="margin-top: 25px;">
+                        <input type="search" id="site-search"/>
+                    </div>
+                    <button class="btn success btn-right">Search</button>
+                </article>
+            </section>
+            <section class="caja_blanca" style="display: flex; flex-direction: column; align-items: flex-end;">
+                <article style="display: flex; align-items: center;">
+                    <label for="horns">Joinable</label>
+                    <input type="checkbox" id="joinable"/>
+                </article>
+                <article style="display: flex; align-items: center;">
+                    <label for="horns">In Progress</label>
+                    <input type="checkbox" id="inProgress"/>
+                </article>
+            </section>
+        </div>
         <article style="display: flex; align-items: center;">
             <section class="caja_blanca caja_blanca_joinable">
                 <p>Available Game 1</p>
