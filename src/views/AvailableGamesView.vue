@@ -3,8 +3,8 @@
         <div style="display: flex; justify-content: space-between;">
             <section class="left-align">
                 <article style="display: flex;">
-                    <div style="margin-top: 25px;">
-                        <input type="search" id="site-search"/>
+                    <div style="margin-top: 10px;">
+                        <input type="text" id="site-search"/>
                     </div>
                     <button class="btn success btn-right">Search</button>
                 </article>
@@ -21,38 +21,40 @@
             </section>
         </div>
         <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable">
+            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
                 <p>Available Game 1</p>
+                <button class="btn-small success btn-join">Join!</button>
             </section>
-            <button class="btn-small success btn-join">Join!</button>
         </article>
         <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable">
+            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
                 <p>Available Game 2</p>
+                <button class="btn-small success btn-join">Join!</button>
             </section>
-            <button class="btn-small success btn-join">Join!</button>
-        </article><article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable">
+        </article>
+        <article style="display: flex; align-items: center;">
+            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
                 <p>Available Game 3</p>
+                <button class="btn-small success btn-join">Join!</button>
             </section>
-            <button class="btn-small success btn-join">Join!</button>
-        </article><article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable">
+        </article>
+        <article style="display: flex; align-items: center;">
+            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
                 <p>Available Game 4</p>
+                <button class="btn-small success btn-join">Join!</button>
             </section>
-            <button class="btn-small success btn-join">Join!</button>
         </article>
         <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable">
+            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
                 <p>Available Game 5</p>
+                <button class="btn-small success btn-join">Join!</button>
             </section>
-            <button class="btn-small success btn-join">Join!</button>
         </article>
         <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable">
+            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
                 <p>Available Game 6</p>
+                <button class="btn-small success btn-join">Join!</button>
             </section>
-            <button class="btn-small success btn-join">Join!</button>
         </article>
     </div>
   </template>
