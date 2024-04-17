@@ -131,5 +131,7 @@ input[type=text], select {
   .caja_blanca_buy_attack{
     width: 800px;
     justify-content: space-between;
+    padding-left: 145px;
+    padding-right: 70px;
 
 }
