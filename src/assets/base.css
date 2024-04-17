@@ -60,7 +60,7 @@
 
 body {
   /*background-color: black !important;*/
-  background-image: url(Fondo.jpeg) !important;;
+  background-image: url(fons_def.jpg) !important;;
 
   background-size: cover; /* Ajusta la imagen de fondo para cubrir todo el contenedor */
   background-position: center; /* Centra la imagen de fondo */
