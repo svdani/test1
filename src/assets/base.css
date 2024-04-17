@@ -63,12 +63,12 @@ body {
   background-image: url(fons_def.jpg) !important;;
 
   background-size: cover; /* Ajusta la imagen de fondo para cubrir todo el contenedor */
-  background-position: center; /* Centra la imagen de fondo */
+  /*background-position: center; /* Centra la imagen de fondo */
   background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
 
   min-height: 100vh;
   color: var(--color-text);
-  background: var(--color-background);
+  /*background: var(--color-background);*/
   transition:
     color 0.5s,
     background-color 0.5s;
