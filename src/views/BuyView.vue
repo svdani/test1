@@ -1,8 +1,8 @@
 <template>
     <header>
-        <h1>Player Creation</h1>
+        <h3 class="titelPage">Player Creation</h3>
     </header>
-    <main>
+    <main class="caja_gris">
         <flex>
             <label for="exampleFormControlFile1">Example file input</label>
             <input type="file" class="form-control-file" id="imageFile">

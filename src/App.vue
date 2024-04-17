@@ -37,7 +37,7 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
             <li><RouterLink to="/joinView">Join</RouterLink></li>
           </ul>
         </li> 
-        <li><RouterLink to="/attackManagement">Attack Management</RouterLink></li>  
+        <!--<li><RouterLink to="/attackManagement">Attack Management</RouterLink></li>  -->
         <li>
           <span @click="toggleAbout">Store</span> <!-- Opción principal con subopciones -->
           <ul v-if="isSubMenuOpen">
@@ -45,8 +45,7 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
             <li><RouterLink to="/sellAttack">Sell Attack</RouterLink></li>
             <li><RouterLink to="/buyAttack">Buy Attack</RouterLink></li>
           </ul>
-        </li>   
-        <li><RouterLink to="/ranking">Ranking</RouterLink></li>  
+        </li>    
         <li>
           <span @click="toggleAbout">Game Adimistration</span> <!-- Opción principal con subopciones -->
           <ul v-if="isSubMenuOpen">

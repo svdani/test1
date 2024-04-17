@@ -25,10 +25,15 @@
 .success {
     background-color: #FFC700;
 }
-
-.btn:hover,
-.btn-small:hover {
+.success:hover {
     background-color: #E4B201;
+}
+
+.danger {
+    background-color: #dc3545;
+}
+.danger:hover {
+    background-color: #c82333;
 }
 
 

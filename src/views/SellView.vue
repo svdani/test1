@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <header>
-            <h1>Sell Attacks</h1>
+            <h3 class="titelPage">Sell Attacks</h3>
         </header>
         <main>
             <div class="flex-container">

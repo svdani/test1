@@ -1,6 +1,7 @@
 <template>
-    
-      <form>
+    <article class=" caja_createAttack">
+      <h3 class="titelPage">Create Attack</h3>
+      <form class="caja_gris form_centrado_izquierdo">
         <div class="flexaligner1 marginmaker1">
           <label for="name">Name</label>
           <input type="text" class="formlooks"> 
@@ -14,9 +15,10 @@
           <input type="text" class="formlookscoord">
         </div>
         <div class="flexaligner2 marginmaker2">
-          <button type="submit" class="buttonlooks success">Create</button>
+          <button type="submit" class="btn success">Create</button>
         </div>
       </form>
+    </article>
 </template>
   <style>
 
