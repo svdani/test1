@@ -116,6 +116,7 @@ table{
     margin: auto;
     width: 50%;
     align-items: center;
+    display: flex;
 }
 
 input[type=text], select {
