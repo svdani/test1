@@ -4,14 +4,18 @@
     </header>
     <main>
         <div class="caja_gris caja_gris_joinable">
-            <h3>Joinable Games</h3>
+            <article style="display: flex; justify-content: space-between; ">
+                <h3>Attack</h3>
+                <h3>Position</h3>
+                <h3>Price</h3>
+            </article>
             <article style="display: flex; align-items: center;">
                 <section class="caja_blanca caja_blanca_buy_attack">
                     <p>Kamehameha</p>
                     <p>(0-1)</p>
                     <p>2500</p>
                 </section>
-                <button class="btn-small success btn-join">Join!</button>
+                <button class="btn-small success btn-join">Buy!</button>
             </article>
             <article style="display: flex; align-items: center;">
                 <section class="caja_blanca caja_blanca_buy_attack">
@@ -19,7 +23,7 @@
                     <p>(1-1)</p>
                     <p>99999</p>
                 </section>
-                <button class="btn-small success btn-join">Join!</button>
+                <button class="btn-small success btn-join">Buy!</button>
             </article>
             <article style="display: flex; align-items: center;">
                 <section class="caja_blanca caja_blanca_buy_attack">
@@ -27,7 +31,7 @@
                     <p>(1-0)</p>
                     <p>300</p>
                 </section>
-                <button class="btn-small success btn-join">Join!</button>
+                <button class="btn-small success btn-join">Buy!</button>
             </article>
         </div>
     </main>
