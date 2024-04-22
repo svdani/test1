@@ -4,6 +4,37 @@
     </header>
     <main>
         <div class="caja_gris caja_gris_joinable">
+            
+            <table>
+            <tr>
+                <th>Attack</th>
+                <th>Position</th>
+                <th>Price</th>
+                
+            </tr>
+            <tr>
+                <td>Kamehameha</td>
+                <td>(0-1)</td>
+                <td>2500</td>
+                <td><button class="btn-small success btn-join">Buy!</button></td>
+            </tr>
+            <tr>
+                <td>Genkidama</td>
+                <td>(1-1)</td>
+                <td>99999</td>
+                <td><button class="btn-small success btn-join">Buy!</button></td>
+            </tr>
+            <tr>
+                <td>Z Sword</td>
+                <td>(1-0)</td>
+                <td>300</td>
+                <td><button class="btn-small success btn-join">Buy!</button></td>
+            </tr>
+            </table>
+
+            
+            
+<!--
             <article style="display: flex; justify-content: space-between; padding-left: 25px; padding-right: 135px;">
                 <h3>Attack</h3>
                 <h3>Position</h3>
@@ -33,6 +64,7 @@
                 </section>
                 <button class="btn-small success btn-join">Buy!</button>
             </article>
+            -->
         </div>
     </main>
 
