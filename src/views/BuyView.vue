@@ -4,7 +4,7 @@
     </header>
     <main>
         <div class="caja_gris caja_gris_joinable">
-            <article style="display: flex; justify-content: space-between; ">
+            <article style="display: flex; justify-content: space-between; padding-left: 25px; padding-right: 135px;">
                 <h3>Attack</h3>
                 <h3>Position</h3>
                 <h3>Price</h3>
