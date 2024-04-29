@@ -46,7 +46,11 @@
                 </tr>
               </tbody>
             </table>
+            <div class="coins">Coins: 27800</div> <!-- Coins text -->
           </div>
+        </div>
+        <div class="sell-container">
+          <button class="big-btn">SELL</button> <!-- New big button -->
         </div>
       </main>
     </div>
@@ -60,6 +64,7 @@
       margin: 20px;
       display: flex;
       justify-content: space-between;
+      position: relative; /* Ensure proper positioning of coins text */
     }
   
     .custom-table {
@@ -106,8 +111,30 @@
       background-color: #ff7f00;
     }
   
-    .gray-background {
-      background-color: #f2f2f2;
+    .big-btn {
+      padding: 15px 30px; /* Adjusted big button size */
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+  
+    .big-btn:hover {
+      background-color: #ff7f00;
+    }
+  
+    .coins {
+        position: absolute;
+        top: -1px; /* Increased the top position */
+        right: 10px;
+    }
+
+    .sell-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; /* Adjusted margin */
     }
   </style>
   
