@@ -57,5 +57,5 @@
             </section>
         </article>
     </div>
-  </template>
-  
+
+</template>
