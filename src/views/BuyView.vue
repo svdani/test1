@@ -6,7 +6,7 @@
         <div class="caja_gris caja_gris_joinable">
             
             <table>
-            <tr>
+            <tr style="font-size: 150%;">
                 <th>Attack</th>
                 <th>Position</th>
                 <th>Price</th>
