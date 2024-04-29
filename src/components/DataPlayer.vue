@@ -20,3 +20,42 @@
         </article>
     </section>
 </template>
+
+<script>
+import axios from 'axios';
+
+const token = localStorage.getItem("token");
+const user = localStorage.getItem("user");
+
+console.log("token ==" + token);
+
+export default {
+  data() {
+    return {
+      playerInfo: {} // Objeto donde almacenarás la información obtenida de la API
+    };
+  },
+
+    mounted() {
+        // URL de la API desde donde deseas obtener la información
+        const apiUrl = 'https://balandrau.salle.url.edu/i3/player-info';
+
+        // Realiza la solicitud GET a la API utilizando axios
+        axios.get(apiUrl)
+        .then(response => {
+            // Verifica si la respuesta es exitosa (estado 200)
+            if (response.status === 200) {
+            // Almacena los datos obtenidos en playerInfo
+            this.playerInfo = response.data;
+            } else {
+            // Si la respuesta no es exitosa, muestra un mensaje de error en la consola
+            console.error('Error al obtener información del jugador:', response.statusText);
+            }
+        })
+        .catch(error => {
+            // Maneja cualquier error que ocurra durante la solicitud
+            console.error('Error al realizar la solicitud:', error);
+        });
+    }
+};
+</script>
