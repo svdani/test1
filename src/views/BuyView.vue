@@ -10,7 +10,47 @@
                 <th>Attack</th>
                 <th>Position</th>
                 <th>Price</th>
-                
+            </tr>
+            <tr style="text-indent: 6em;">
+                <td>Kamehameha</td>
+                <td>(0-1)</td>
+                <td>2500</td>
+                <td><button class="btn-small success btn-join">Buy!</button></td>
+            </tr>
+            <tr style="text-indent: 6em;">
+                <td>Genkidama</td>
+                <td>(1-1)</td>
+                <td>99999</td>
+                <td><button class="btn-small success btn-join">Buy!</button></td>
+            </tr>
+            <tr style="text-indent: 6em;">
+                <td>Z Sword</td>
+                <td>(1-0)</td>
+                <td>300</td>
+                <td><button class="btn-small success btn-join">Buy!</button></td>
+            </tr>
+            </table>
+        </div>
+    </main>
+
+    
+</template>
+
+
+
+<!--
+<template>
+    <header>
+        <h3 class="titelPage">Buy Attacks</h3>
+    </header>
+    <main>
+        <div class="caja_gris caja_gris_joinable">
+            
+            <table>
+            <tr>
+                <th>Attack</th>
+                <th>Position</th>
+                <th>Price</th>
             </tr>
             <tr>
                 <td>Kamehameha</td>
@@ -31,10 +71,14 @@
                 <td><button class="btn-small success btn-join">Buy!</button></td>
             </tr>
             </table>
+        </div>
+    </main>
 
+    
+</template>
             
             
-<!--
+
             <article style="display: flex; justify-content: space-between; padding-left: 25px; padding-right: 135px;">
                 <h3>Attack</h3>
                 <h3>Position</h3>
@@ -65,8 +109,4 @@
                 <button class="btn-small success btn-join">Buy!</button>
             </article>
             -->
-        </div>
-    </main>
-
-    
-</template>
+        
