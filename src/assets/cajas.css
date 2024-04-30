@@ -134,3 +134,13 @@ input[type=text], select {
     justify-content: space-between;
 
 }
+
+.bordered_table{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.bordered_table th, td{
+    border: 1px solid black;
+    
+}
