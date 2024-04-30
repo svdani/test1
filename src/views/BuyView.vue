@@ -5,7 +5,7 @@
     <main>
         <div class="caja_gris caja_gris_joinable">
             
-            <table>
+            <table class="border_table">
             <tr style="font-size: 150%;">
                 <th>Attack</th>
                 <th>Position</th>
@@ -15,19 +15,19 @@
                 <td>Kamehameha</td>
                 <td>(0-1)</td>
                 <td>2500</td>
-                <td><button class="btn-small success btn-join">Buy!</button></td>
+                <td><button class="btn-wide success btn-join">Buy!</button></td>
             </tr>
             <tr style="text-indent: 6em;">
                 <td>Genkidama</td>
                 <td>(1-1)</td>
                 <td>99999</td>
-                <td><button class="btn-small success btn-join">Buy!</button></td>
+                <td><button class="btn-wide success btn-join">Buy!</button></td>
             </tr>
             <tr style="text-indent: 6em;">
                 <td>Z Sword</td>
                 <td>(1-0)</td>
                 <td>300</td>
-                <td><button class="btn-small success btn-join">Buy!</button></td>
+                <td><button class="btn-wide success btn-join">Buy!</button></td>
             </tr>
             </table>
         </div>

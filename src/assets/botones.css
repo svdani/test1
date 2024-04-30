@@ -60,3 +60,13 @@
 
     align-items: right;
 }
+
+.btn-wide{
+    border: none;
+    padding: 10px 40px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+    height: fit-content;
+}
