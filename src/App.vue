@@ -32,7 +32,7 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
         <li>
           <span @click="toggleAbout">Player Management</span> <!-- Opción principal con subopciones -->
           <ul v-if="isSubMenuOpen">
-            <li><RouterLink to="/createPlayer">Create Player</RouterLink></li>
+            <li><RouterLink to="/loginPlayer">Login Player</RouterLink></li>
             <li><RouterLink to="/playerInfo">Player Info</RouterLink></li>
             <li><RouterLink to="/joinView">Join</RouterLink></li>
           </ul>

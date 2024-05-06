@@ -9,7 +9,6 @@ import axios from 'axios';
           <input type="text" class="form-control" placeholder="imageFile" v-model="img">
           <!--<input type="file" class="form-control-file" id="imageFile" > -->
           <button id="btnCreate" @click="registro" class="btn success">Registro</button>
-          <button id="btnCreate" @click="inicioSession" class="btn success">Log in</button>
         </form>
     </main>
 </template>
