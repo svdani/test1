@@ -6,10 +6,9 @@ import axios from 'axios';
             
           <input type="text" class="form-control" placeholder="Player name" v-model="playerName">
           <input type="text" class="form-control" placeholder="Password" v-model="password">
-          <input type="text" class="form-control" placeholder="imageFile" v-model="img">
-          <!--<input type="file" class="form-control-file" id="imageFile" > -->
+          <input type="text" class="form-control" placeholder="Confirm Password" v-model="confirmPwd">
+          <input type="text" class="form-control" placeholder="imageFile" v-model="imgP">
           <button id="btnCreate" @click="registro" class="btn success">Registro</button>
-          <button id="btnCreate" @click="inicioSession" class="btn success">Log in</button>
         </form>
     </main>
 </template>
@@ -19,13 +18,12 @@ import axios from 'axios';
 //stopPropagation
 
 
-
-
 export default {
   data() {
     return {
       playerName: '',
       password: '',
+      confirmPwd: '',
       img: ''
     };
   },
@@ -40,6 +38,8 @@ export default {
       const datosSolicitud = {
         player_ID: this.playerName,
         password: this.password,
+        img: this.img,
+        confirmPwd: this.confirmPwd
       };
 
       // Opciones para la solicitud fetch, incluyendo el método POST y el cuerpo de la solicitud
@@ -78,7 +78,15 @@ export default {
     
     registro() {
       console.log("Realizar Solicitud");
+      // Verificar si las contraseñas coinciden
+      let isPwdCorrect = this.password === this.confirmPwd;
 
+      // Si las contraseñas no coinciden, terminar la función aquí
+      if (!isPwdCorrect) {
+        console.log("Las contraseñas no coinciden");
+        return;
+      }
+      
       // URL de la API a la que quieres enviar la solicitud POST
       const apiUrl = 'https://balandrau.salle.url.edu/i3/players';
 
@@ -89,7 +97,6 @@ export default {
         img: this.img
       };
 
-    
       // Opciones para la solicitud fetch, incluyendo el método POST y el cuerpo de la solicitud
       const requestOptions = {
         method: 'POST',

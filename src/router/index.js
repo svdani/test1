@@ -17,6 +17,11 @@ const router = createRouter({
       component: () => import('../views/CreatePlayerView.vue')
     },
     {
+      path: '/loginPlayer',
+      name: 'loginPlayer',
+      component: () => import('../views/LoginPlayerView.vue')
+    },
+    {
       path: '/deletePlayer',
       name: 'deletePlayer',
       component: () => import('../views/DeletePlayerView.vue')

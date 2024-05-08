@@ -3,7 +3,7 @@
         <h3 class="titelPage">Buy Attacks</h3>
     </header>
     <main>
-        <div class="caja_gris caja_gris_joinable">
+        <div class="caja_gris_buy_responsive caja_gris_joinable">
             
             <table class="border_table">
             <tr style="font-size: 150%;">
@@ -11,19 +11,19 @@
                 <th>Position</th>
                 <th>Price</th>
             </tr>
-            <tr style="text-indent: 6em;">
+            <tr style="text-align: center;">
                 <td>Kamehameha</td>
                 <td>(0-1)</td>
                 <td>2500</td>
                 <td><button class="btn-wide success btn-join">Buy!</button></td>
             </tr>
-            <tr style="text-indent: 6em;">
+            <tr style="text-align: center;">
                 <td>Genkidama</td>
                 <td>(1-1)</td>
                 <td>99999</td>
                 <td><button class="btn-wide success btn-join">Buy!</button></td>
             </tr>
-            <tr style="text-indent: 6em;">
+            <tr style="text-align: center;">
                 <td>Z Sword</td>
                 <td>(1-0)</td>
                 <td>300</td>
