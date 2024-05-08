@@ -4,7 +4,7 @@
         <h3 class="titelPage">Arena Matches</h3>
       </header>
       <main>
-        <div class="matches-list caja_gris">
+        <div class="matches-list matches-container">
           <table class="matches-table">
             <thead>
               <tr>
@@ -52,24 +52,27 @@
   </script>
   
   <style>
-    .matches-list {
-      max-height: 400px; /* Set a maximum height for the list */
-      overflow-y: auto; /* Enable vertical scrolling */
-    }
-    .matches-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .matches-table th,
-    .matches-table td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-    }
-    .caja_gris {
-      background-color: #f2f2f2; /* Gray background color */
-      padding: 20px; /* Add padding for visual appeal */
-      border-radius: 5px; /* Optional: Add border radius */
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow */
-    }
-  </style>
+  .matches-list {
+    max-height: 400px; /* Set a maximum height for the list */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  .matches-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .matches-table th,
+  .matches-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  .matches-container {
+    background-color: #f2f2f2; /* Gray background color */
+    padding: 20px; /* Add padding for visual appeal */
+    border-radius: 5px; /* Optional: Add border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow */
+    color: #333; /* Set text color to black */
+  }
+</style>
+
+  
