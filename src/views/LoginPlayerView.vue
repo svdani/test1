@@ -1,6 +1,6 @@
 import axios from 'axios';
 <template>
-    <main class="caja_gris content">
+    <main class="caja_gris_login_responsive content">
         <!-- prevent default -->
         <form class="flex-container" onsubmit="return false;">
           <input type="text" class="form-control" placeholder="Player name" v-model="playerName">
