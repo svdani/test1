@@ -3,7 +3,7 @@
 .table-responsive {
     overflow-x: auto;
     display: block; /* Makes table behave like a block element on small screens */
-    width: 100%; /* Ensures table fills available width */
+    width: 50%; /* Ensures table fills available width */
   }
   
   .table-responsive tr {
@@ -18,6 +18,11 @@
   
   /* You can add additional media queries for different screen sizes here */
   @media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+        display: block; /* Makes table behave like a block element on small screens */
+        width: 100%; /* Ensures table fills available width */
+      }
     
   }
   
