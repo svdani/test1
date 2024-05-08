@@ -3,7 +3,7 @@
         <h3 class="titelPage">Buy Attacks</h3>
     </header>
     <main>
-        <div class="caja_gris caja_gris_joinable">
+        <div class="caja_gris_buy_responsive caja_gris_joinable">
             
             <table class="border_table">
             <tr style="font-size: 150%;">
