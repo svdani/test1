@@ -1,0 +1,11 @@
+.available_div_responsive {
+    display: flex; 
+    justify-content: space-between;
+    
+}
+@media screen and (max-width: 868px) {
+    .available_div_responsive {
+        flex-direction: column;
+    }
+    
+}

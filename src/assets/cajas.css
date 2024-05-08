@@ -156,8 +156,42 @@ input[type=text], select {
     font-style: italic;
 }
 
+
+
+  .caja_gris_login_responsive{
+    margin:1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.7); 
+    display: flex;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+  .caja_gris_available_games_responsive{
+    margin:1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.7); 
+    display: flex;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+}
+
 @media screen and (max-width: 868px) {
-    .caja_gris_buy_responsive {
-      min-width: 400px; 
+        .caja_gris_buy_responsive {
+          min-width: 400px; 
+        }
+      
+    .caja_gris_login_responsive {
+      min-width: 115px; 
+    }
+  
+    .caja_gris_available_games_responsive {
+      min-width: 368px; 
     }
   }
+

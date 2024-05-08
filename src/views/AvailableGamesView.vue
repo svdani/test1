@@ -1,5 +1,5 @@
 <template>
-    <div class="caja_gris caja_gris_joinable">
+    <div class="caja_gris_available_games_responsive caja_gris_joinable">
         <div style="display: flex; justify-content: space-between;">
             <section class="left-align">
                 <article style="display: flex;">
@@ -59,3 +59,14 @@
     </div>
 
 </template>
+
+<style scoped> 
+
+    .available_div_responsive {
+    display: flex; 
+    justify-content: space-between;
+    
+}
+
+
+</style>
