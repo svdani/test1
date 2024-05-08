@@ -3,8 +3,9 @@
 
 
     <form class="caja_ranking" onsubmit="return false;" id='search-form'>
-        <input id='search-ranking'  placeholder='Search name' type='text'/>
-        <button id="btn-search-ranking" class="btn-small success" @click="searchPlayers"><span>Search!</span></button>
+      <input v-model="searchName" id="search-ranking" placeholder="Search name" type="text"/>
+
+      <button id="btn-search-ranking" class="btn-small success" @click="searchPlayers"><span>Search!</span></button>
     </form>
 
     <main class="caja_gris caja_ranking">
@@ -19,13 +20,6 @@
                 <td>{{ player.level }}</td>
             </tr>
         </table>
-
-      <!-- Controles de paginación -->
-      <div class="pagination">
-        <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
-        <span>Page {{ currentPage }}</span>
-        <button @click="nextPage" :disabled="currentPage * pageSize >= totalCount">Next</button>
-      </div>
 
     </main>
 </template>
@@ -58,7 +52,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      playerInfo: null // Inicializa playerInfo como null hasta que se carguen los datos
+      playerInfo: null, // Inicializa playerInfo como null hasta que se carguen los datos
+      searchName: ''
     };
   },
   mounted() {
@@ -92,12 +87,11 @@ export default {
   
     // Función para buscar jugadores por nombre
     searchPlayers() {
-      
       const token = localStorage.getItem("token");
       const apiUrl = 'https://balandrau.salle.url.edu/i3/players';
-      const searchName = this.searchName; // Obtén el nombre de búsqueda y elimina espacios en blanco
+      const searchTerm = this.searchName.trim(); // Obtén el nombre de búsqueda y elimina espacios en blanco
 
-      console.log("searchName=="+ searchName);
+      console.log('Search term:', searchTerm);
 
       // Configuración de los encabezados de la solicitud
       const headers = {
@@ -107,17 +101,28 @@ export default {
 
       let params = {}; // Parámetros para la solicitud GET
 
-      if (searchName) {
-        params = { name: searchName }; // Agrega el parámetro de búsqueda si se proporciona un nombre
+      if (searchTerm) {
+        params = { name_contains: searchTerm }; // Usar name_contains para realizar una búsqueda por nombre parcial
       }
 
       axios.get(apiUrl, { headers, params })
         .then(response => {
           if (response.status === 200) {
-            if (response.data.length > 0) {
-              this.playerInfo = response.data; // Asigna los resultados de la búsqueda
+
+            console.log(response.data);
+            // Filtrar los objetos donde el campo 'name' sea 'dani'
+            //const filteredData = response.data.filter(item => item.player_ID === searchTerm);
+
+            const filteredData = response.data.filter(item => {
+                // Comprueba si el ID del jugador (item.player_ID) contiene el término de búsqueda (searchTerm)
+                return item.player_ID.includes(searchTerm);
+            });
+            if (response.data && Array.isArray(response.data)) {
+
+              this.playerInfo = filteredData;
+              console.log(filteredData);
             } else {
-              this.playerInfo = []; // No se encontraron resultados, muestra una lista vacía
+              this.playerInfo = [];
               console.log('No se encontraron registros');
             }
           } else {
