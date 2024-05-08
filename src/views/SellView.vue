@@ -22,11 +22,12 @@
             </table>
           </div>
           <div class="buttons-container">
-            <button class="btn"><</button>
-            <button class="btn">></button>
-            <button class="btn"><<</button>
-            <button class="btn">>></button> <!-- New button -->
+              <button class="btn">&lt;</button>
+              <button class="btn">&gt;</button>
+              <button class="btn">&lt;&lt;</button>
+              <button class="btn">&gt;&gt;</button> <!-- New button -->
           </div>
+
           <div class="right-table">
             <table class="custom-table">
               <thead>
