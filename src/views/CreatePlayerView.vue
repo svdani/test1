@@ -5,9 +5,9 @@ import axios from 'axios';
         <form class="flex-container" onsubmit="return false;">
             
           <input type="text" class="form-control" placeholder="Player name" v-model="playerName">
-          <input type="text" class="form-control" placeholder="Password" v-model="password">
-          <input type="text" class="form-control" placeholder="Confirm Password" v-model="confirmPwd">
-          <input type="text" class="form-control" placeholder="imageFile" v-model="imgP">
+          <input type="password" class="form-control" placeholder="Password" v-model="password">
+          <input type="password" class="form-control" placeholder="Confirm Password" v-model="confirmPwd">
+          <input type="text" class="form-control" placeholder="imageFile" v-model="img">
           <button id="btnCreate" @click="registro" class="btn success">Registro</button>
         </form>
     </main>
@@ -28,69 +28,22 @@ export default {
     };
   },
   methods: {
-    inicioSession() {
-      console.log("Realizar Solicitud");
-
-      // URL de la API que quieres consultar
-      const apiUrl = 'https://balandrau.salle.url.edu/i3/players/join';
-
-      // Datos a enviar en la solicitud (player_ID, password, img)
-      const datosSolicitud = {
-        player_ID: this.playerName,
-        password: this.password,
-        img: this.img,
-        confirmPwd: this.confirmPwd
-      };
-
-      // Opciones para la solicitud fetch, incluyendo el método POST y el cuerpo de la solicitud
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datosSolicitud)
-      };
-
-      // Realizar la solicitud utilizando fetch() con las opciones
-      fetch(apiUrl, requestOptions)
-        .then(response => {
-          // Verificar si la respuesta es exitosa (estado 200)
-          if (response.ok) {
-            // Convertir la respuesta a JSON
-            return response.json();
-          }
-          // Si la respuesta no es exitosa, lanzar un error
-          throw new Error('La solicitud a la API falló');
-        })
-        .then(data => {
-          // Hacer algo con los datos obtenidos de la API
-          console.log('Respuesta de la API:', data);
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("user", data.player_ID);
-          
-          //console.log('Respuesta ??', data.token);
-        })
-        .catch(error => {
-          // Manejar cualquier error que ocurra durante la solicitud
-          console.error('Error al realizar la solicitud:', error);
-        });
-    },
-    
+        
     registro() {
-      console.log("Realizar Solicitud");
+      //console.log("Realizar Solicitud");
       // Verificar si las contraseñas coinciden
       let isPwdCorrect = this.password === this.confirmPwd;
 
       // Si las contraseñas no coinciden, terminar la función aquí
       if (!isPwdCorrect) {
-        console.log("Las contraseñas no coinciden");
+        alert("Las contraseñas no coinciden");
         return;
       }
       
       // URL de la API a la que quieres enviar la solicitud POST
       const apiUrl = 'https://balandrau.salle.url.edu/i3/players';
 
-      // Datos a enviar en la solicitud (player_ID y password)
+      // Datos a enviar en la solicitud (player_ID, password y img)
       const datosSolicitud = {
         player_ID: this.playerName,
         password: this.password,
@@ -111,26 +64,22 @@ export default {
         .then(response => {
           console.log(response.status)
 
-          // Verificar si la respuesta es exitosa (estado 200)
+          
           if (response.ok) {
             // Convertir la respuesta a JSON
-            alert("Usuario creado correctamente!!");
+            //alert("Usuario creado correctamente!!");
+            this.$router.push({ name: 'loginPlayer' });
             return response.json();
           } else{
             alert("Error al crear Usuario, intentalo con otro nombre ");
           }
-          // Si la respuesta no es exitosa, lanzar un error
           throw new Error('La solicitud a la API falló');
         })
         .then(data => {
-          // Hacer algo con los datos obtenidos de la API
           console.log('Respuesta de la API:', data);
-          // Por ejemplo, podrías mostrar un mensaje de éxito o redireccionar a otra página
+
         })
-        //.catch(error => {
-        //  // Manejar cualquier error que ocurra durante la solicitud
-        //  console.error('Error al realizar la solicitud:', error);
-        //});
+
     }
   }
 };

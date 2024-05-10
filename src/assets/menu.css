@@ -63,29 +63,29 @@ img {
 .menu ul {
     list-style: none;
     padding: 0;
-  }
+}
+
+.menu ul ul {
+  margin-left: 20px; /* Indentación para las subopciones */
+}
+
+.menu .open {
+  display: block; /* Mostrar el menú si está abierto */
+}
+
+.menu ul ul {
+  display: none; /* Ocultar las subopciones por defecto */
+}
+
+.menu ul li:hover ul {
   
-  .menu ul ul {
-    margin-left: 20px; /* Indentación para las subopciones */
-  }
+  display: block; /* Mostrar las subopciones al pasar el ratón sobre la opción principal */
+}
+.menu ul li ul li:hover{
   
-  .menu .open {
-    display: block; /* Mostrar el menú si está abierto */
-  }
-  
-  .menu ul ul {
-    display: none; /* Ocultar las subopciones por defecto */
-  }
-  
-  .menu ul li:hover ul {
-    
-    display: block; /* Mostrar las subopciones al pasar el ratón sobre la opción principal */
-  }
-  .menu ul li ul li:hover{
-    
-    background-color: #b48e02;
-  }
-  
-  li {
-    width: 100%;
-  }
+  background-color: #b48e02;
+}
+
+li {
+  width: 100%;
+}
