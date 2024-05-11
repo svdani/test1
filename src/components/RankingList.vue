@@ -65,7 +65,7 @@
       }
     }
   };
-  </script>
+</script>
 <style>
   /* Estilo para el borde inferior de la fila */
   .bottom-border {

@@ -64,8 +64,20 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
   </nav>
 </header>
 
-<div style="padding: 0px 14%" >
+<section class="workSpace" >
   <RouterView />
-</div>
+</section>
 
 </template>
+
+<style>
+.workSpace{
+  padding: 0px 14%;
+}
+
+@media screen and (max-width: 868px) {
+  .workSpace{
+    padding: 0px 0px;
+  }
+}
+</style>

@@ -5,8 +5,7 @@
     <Equipment/>
     <BackPack/>
     <section style="display: flex; justify-content: center;">
-      <!-- Corrección en la vinculación del evento click -->
-      <button class="btn danger" @click="deletePlayer">Borrar personaje</button>
+      <button class="btn danger" @click="deletePlayer">Delete Player</button>
     </section>
   </main>
 </template>
