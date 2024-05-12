@@ -10,10 +10,10 @@
 </template>
 
 <script>
-  import ItemAttack from './item-attack.vue';
-  import axios from 'axios';
-  
-  export default {
+import ItemAttack from './item-attack.vue';
+import axios from 'axios';
+
+export default {
     name: 'App',
     components: {
         ItemAttack
@@ -51,8 +51,7 @@
         filterAttacks() {
             // Filtrar los ataques donde equipped es true
             this.filteredAttacks = this.attackEquip.filter(attack => attack.equipped== true);
-            console.log();
         }
     }
-  }
+}
   </script>

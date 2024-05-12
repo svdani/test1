@@ -41,13 +41,17 @@ export default {
       axios.post(apiUrl,{}, config)
         .then(response => {
           console.log('Response:', response.data);
-          alert("Attack equiped")
+          //alert("Attack equiped")
           window.location.reload();
-          // Aquí puedes manejar la respuesta de la API, como mostrar una notificación de éxito, etc.
+
         })
         .catch(error => {
-          console.error('Error:', error);
-          // Aquí puedes manejar errores, como mostrar un mensaje de error al usuario
+          console.log('Error:', error.response.data.error.message);
+          if (error.response && error.response.status === 403 && error.response.data.error.message === "You can't have more than 3 attacks equipped") {
+                alert("You already have the maximum number of attacks equipped");
+            } else {
+                alert("Failed to purchase attack");
+            }
         });
   
       }

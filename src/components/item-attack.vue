@@ -44,7 +44,7 @@ export default {
       axios.delete(apiUrl, config)
         .then(response => {
           console.log('Response:', response.data);
-          alert("Attack unequiped")
+          //alert("Attack unequiped")
           window.location.reload();
           // Aquí puedes manejar la respuesta de la API, como mostrar una notificación de éxito, etc.
         })

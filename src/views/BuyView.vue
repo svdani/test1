@@ -21,7 +21,7 @@
                     <td>{{ attack.power }}</td>
                     <td>{{ attack.price }}$</td>
 
-                    <td style="border: none;"><button class="btn-wide success btn-join" >Buy!</button></td>
+                    <td style="border: none;"><button @click="buyAttack(attack)" class="btn-wide success btn-join" >Buy!</button></td>
                 </tr> 
             </table>
         </div>
@@ -62,6 +62,33 @@ import axios from 'axios';
             console.error('Error al realizar la solicitud:', error);
           });
       },
+
+      buyAttack(attack){
+        const token = localStorage.getItem("token");
+        
+        const apiUrl = `https://balandrau.salle.url.edu/i3/shop/attacks/${attack.attack_ID}/buy`;
+
+      console.log("apiUrl",apiUrl);
+      console.log("Token:", token);
+
+      axios.post(apiUrl, {},{ headers: { 'Accept': 'application/json', 'Bearer': token } })
+        .then(response => {
+          console.log('Response:', response.data);
+          alert("Attack buyed")
+          window.location.reload();
+        })
+        .catch(error => {
+            console.log('Error:', error);
+            if (error.response && error.response.status === 403) {
+                // Maneja el error específico de "Not enough coins to buy it"
+                alert("Not enough coins to buy this attack");
+            } else {
+                // Maneja otros errores
+                alert("Failed to purchase attack");
+            }
+        });
+      }
+
       //Si se añade buscador
       //filterData(searchTerm) {
       //  if (!searchTerm) {
@@ -77,76 +104,3 @@ import axios from 'axios';
     }
   };
 </script>
-
-<!--
-<template>
-    <header>
-        <h3 class="titelPage">Buy Attacks</h3>
-    </header>
-    <main>
-        <div class="caja_gris caja_gris_joinable">
-            
-            <table>
-            <tr>
-                <th>Attack</th>
-                <th>Position</th>
-                <th>Price</th>
-            </tr>
-            <tr>
-                <td>Kamehameha</td>
-                <td>(0-1)</td>
-                <td>2500</td>
-                <td><button class="btn-small success btn-join">Buy!</button></td>
-            </tr>
-            <tr>
-                <td>Genkidama</td>
-                <td>(1-1)</td>
-                <td>99999</td>
-                <td><button class="btn-small success btn-join">Buy!</button></td>
-            </tr>
-            <tr>
-                <td>Z Sword</td>
-                <td>(1-0)</td>
-                <td>300</td>
-                <td><button class="btn-small success btn-join">Buy!</button></td>
-            </tr>
-            </table>
-        </div>
-    </main>
-
-    
-</template>
-            
-            
-
-            <article style="display: flex; justify-content: space-between; padding-left: 25px; padding-right: 135px;">
-                <h3>Attack</h3>
-                <h3>Position</h3>
-                <h3>Price</h3>
-            </article>
-            <article style="display: flex; align-items: center;">
-                <section class="caja_blanca caja_blanca_buy_attack">
-                    <p>Kamehameha</p>
-                    <p>(0-1)</p>
-                    <p>2500</p>
-                </section>
-                <button class="btn-small success btn-join">Buy!</button>
-            </article>
-            <article style="display: flex; align-items: center;">
-                <section class="caja_blanca caja_blanca_buy_attack">
-                    <p>Genkidama</p>
-                    <p>(1-1)</p>
-                    <p>99999</p>
-                </section>
-                <button class="btn-small success btn-join">Buy!</button>
-            </article>
-            <article style="display: flex; align-items: center;">
-                <section class="caja_blanca caja_blanca_buy_attack">
-                    <p>Z Sword</p>
-                    <p>(1-0)</p>
-                    <p>300</p>
-                </section>
-                <button class="btn-small success btn-join">Buy!</button>
-            </article>
-            -->
-        

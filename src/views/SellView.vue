@@ -1,63 +1,132 @@
 <template>
-    <div id="app">
-      <header>
-        <h3 class="titelPage">Sell Attacks</h3>
-      </header>
-      <main>
-        <div class="caja_gris caja_sellattack">
-          <div class="left-table">
-            <table class="custom-table">
-              <thead>
-                <tr>
-                  <th>Backpack</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><b><i>Kamehame</i></b></td>
-                  <td><b><i>3k</i></b></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="buttons-container">
-              <button class="btn">&lt;</button>
-              <button class="btn">&gt;</button>
-              <button class="btn">&lt;&lt;</button>
-              <button class="btn">&gt;&gt;</button> <!-- New button -->
-          </div>
 
-          <div class="right-table">
-            <table class="custom-table">
-              <thead>
-                <tr>
-                  <th>Store</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><b><i>Genkidama</i></b></td>
-                  <td><b><i>5k</i></b></td>
-                </tr>
-                <tr>
-                  <td><b><i>Keizen</i></b></td>
-                  <td><b><i>1k</i></b></td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="coins">Coins: 27800</div> <!-- Coins text -->
-          </div>
-        </div>
-        <div class="sell-container">
-          <button class="big-btn">SELL</button> <!-- New big button -->
-        </div>
-      </main>
+  <header>
+    <h3 class="titelPage">Sell Attacks</h3>
+  </header>
+  <main>
+    <div class="caja_gris caja_sellattack">
+      <BackpackTable />
+      <div class="buttons-container">
+        <button class="btn btn_move success">&lt;</button>
+        <button class="btn btn_move success">&gt;</button>
+        <button class="btn btn_move success">&lt;&lt;</button>
+        <button class="btn btn_move success">&gt;&gt;</button>   
+      </div>
+      <StoreTable />
+      <div class="coins">Coins: 27800</div> 
     </div>
-  </template>
+  </main>
+
+</template>
+
+<script>
+import BackpackTable from '../components/BackpackTable.vue';
+import StoreTable from '../components/StoreTable.vue';
+import axios from 'axios';
+
+export default {
+  components: {
+    BackpackTable,
+    StoreTable
+  },
+  data() {
+    return {
+      attackLista: [],
+      filteredAttacksBag: [], // Lista de ataques en la mochila
+      filteredAttacksSell: [] // Lista de ataques en venta
+    };
+  },
+  created() {
+    this.fetchAttackPlayerData();
+  },
+  methods: {
+    fetchAttackPlayerData() {
+      const token = localStorage.getItem('token');
+      const apiUrl = 'https://balandrau.salle.url.edu/i3/players/attacks';
+
+      axios.get(apiUrl, { headers: { 'Accept': 'application/json', 'Bearer': token } })
+        .then(response => {
+          if (response.status === 200) {
+            this.attackLista = response.data;
+            this.filterAttacks(); // Filtrar los ataques después de recibir los datos
+          } else {
+            console.error('Error al obtener datos del jugador:', response.statusText);
+          }
+        })
+        .catch(error => {
+          console.error('Error al realizar la solicitud:', error);
+        });
+    },
+    filterAttacks() {
+      // Filtrar los ataques donde on_sale es true o false
+      this.filteredAttacksSell = this.attackLista.filter(attack => attack.on_sale);
+      this.filteredAttacksBag = this.attackLista.filter(attack => !attack.on_sale);
+    }
+  }
+};
+</script>
+
+<!--<template>
+  <div id="app">
+    <header>
+      <h3 class="titelPage">Sell Attacks</h3>
+    </header>
+    <main>
+      <div class="caja_gris caja_sellattack">
+        <div class="left-table">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Backpack</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b><i>Kamehame</i></b></td>
+                <td><b><i>3k</i></b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="buttons-container">
+            <button class="btn btn_move success">&lt;</button>
+            <button class="btn btn_move success">&gt;</button>
+            <button class="btn btn_move success">&lt;&lt;</button>
+            <button class="btn btn_move success">&gt;&gt;</button>   
+        </div>
+          
+        <div class="right-table">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Store</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b><i>Genkidama</i></b></td>
+                <td><b><i>5k</i></b></td>
+              </tr>
+              <tr>
+                <td><b><i>Keizen</i></b></td>
+                <td><b><i>1k</i></b></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="coins">Coins: 27800</div> 
+        </div>
+      </div>
+      <div class="sell-container">
+        <button class="btn success">SELL</button> 
+      </div>
+    </main>
+  </div>
+</template>-->
   
-  <style>
+<style>
+
     .caja_sellattack {
       border-radius: 5px;
       padding: 20px;
@@ -65,9 +134,35 @@
       margin: 20px;
       display: flex;
       justify-content: space-between;
-      position: relative; /* Ensure proper positioning of coins text */
+      position: relative; 
     }
-  
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 10px; 
+    }
+
+    .btn_move {
+      width: 3rem;
+      height: 2rem;
+      padding: 0px;
+      margin: 5px 0;
+      /*color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 
+      */
+    }
+    .coins {
+        position: absolute;
+        top: -1px; 
+        right: 10px;
+    }
+
+  /*
     .custom-table {
       width: 100%;
       border-collapse: collapse;
@@ -86,56 +181,17 @@
   
     .left-table,
     .right-table {
-      width: calc(50% - 10px); /* 50% width with 10px spacing between tables */
+      width: calc(50% - 10px);  
     }
   
-    .buttons-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 10px; /* Adjusted margin */
-    }
   
-    .btn {
-      padding: 5px 10px; /* Adjusted button size */
-      background-color: orange;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      margin: 5px 0;
-    }
-  
-    .btn:hover {
-      background-color: #ff7f00;
-    }
-  
-    .big-btn {
-      padding: 15px 30px; /* Adjusted big button size */
-      background-color: orange;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-  
-    .big-btn:hover {
-      background-color: #ff7f00;
-    }
-  
-    .coins {
-        position: absolute;
-        top: -1px; /* Increased the top position */
-        right: 10px;
-    }
+
 
     .sell-container {
       display: flex;
       justify-content: center;
-      margin-top: 20px; /* Adjusted margin */
+      margin-top: 20px; 
     }
+    */
   </style>
   
