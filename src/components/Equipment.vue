@@ -20,7 +20,8 @@
     },
     data() {
         return {
-            attackEquip: [], // Lista de ataques equipados
+            attackEquip: [], 
+            filteredAttacks: []// Lista de ataques equipados
         };
     },
     created() {
@@ -50,7 +51,7 @@
         filterAttacks() {
             // Filtrar los ataques donde equipped es true
             this.filteredAttacks = this.attackEquip.filter(attack => attack.equipped== true);
-            console.log()
+            console.log();
         }
     }
   }

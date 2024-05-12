@@ -42,6 +42,7 @@ export default {
         .then(response => {
           console.log('Response:', response.data);
           alert("Attack equiped")
+          window.location.reload();
           // Aquí puedes manejar la respuesta de la API, como mostrar una notificación de éxito, etc.
         })
         .catch(error => {

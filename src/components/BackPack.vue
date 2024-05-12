@@ -18,7 +18,8 @@
     },
     data() {
         return {
-            attackBag: [], // Lista de ataques mochila
+            attackBag: [], 
+            filteredAttacks: []// Lista de ataques mochila
         };
     },
     created() {

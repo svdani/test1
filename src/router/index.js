@@ -22,11 +22,6 @@ const router = createRouter({
       component: () => import('../views/LoginPlayerView.vue')
     },
     {
-      path: '/deletePlayer',
-      name: 'deletePlayer',
-      component: () => import('../views/DeletePlayerView.vue')
-    },
-    {
       path: '/joinView',
       name: 'joinView',
       component: () => import('../views/JoinBattleView.vue')

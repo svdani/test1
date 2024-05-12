@@ -26,7 +26,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      playerInfo: null,           // Datos del jugador actual
+      playerInfo: null,
+      playerHealth: 100,           // Datos del jugador actual
       token: localStorage.getItem("token"),  // Token de autenticación
       user: localStorage.getItem("user")     // ID del usuario actual
     };
