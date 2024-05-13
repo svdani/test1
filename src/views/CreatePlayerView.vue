@@ -34,8 +34,34 @@ export default {
       // Verificar si las contraseñas coinciden
       let isPwdCorrect = this.password === this.confirmPwd;
 
+      let isNameEmpty = this.name ==="";
+      let isPwdEmpty = this.password === "";
+      let isConfirmPwdEmpty = this.confirmPwd ==="";
+      let isImgFileEmpty = this.imageFile ==="";
+
+      if(isNameEmpty){
+        alert("Campo de nombre vacio");
+        return;
+      }
+
+      if(isPwdEmpty){
+        alert("Campo de contraseña vacio");
+        return;
+      }
+
+      if(isConfirmPwdEmpty){
+        alert("Campo de confirmación contraseña vacio");
+        return;
+      }
+
+      if(isImgFileEmpty){
+        alert("Campo de imagen vacio");
+        return;
+      }
+      
       // Si las contraseñas no coinciden, terminar la función aquí
       if (!isPwdCorrect) {
+        console.log("Las contraseñas no coinciden");
         alert("Las contraseñas no coinciden");
         return;
       }
