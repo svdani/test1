@@ -1,27 +1,29 @@
 <template>
     <section class="left-align">
-        <article style="display: flex; justify-content: flex-end;">
-            <div style="margin-top: 25px;">
+        <article class="search-bar">
+            <div class="search-input">
                 <input type="search" id="site-search"/>
             </div>
             <button class="btn success btn-right">Search</button>
         </article>
     </section>
     <section class="right-align">
-        <article style="display: flex; justify-content: flex-end; align-items: center;">
-            <label for="scales">Finished</label>
-            <input type="checkbox" id="finished"/>
-        </article>
-        <article style="display: flex; justify-content: flex-end; align-items: center;">
-            <label for="horns">Joinable</label>
-            <input type="checkbox" id="joinable"/>
-        </article>
-        <article style="display: flex; justify-content: flex-end; align-items: center;">
-            <label for="horns">In Progress</label>
-            <input type="checkbox" id="inProgress"/>
+        <article class="checkbox-group">
+            <div class="checkbox-item">
+                <label for="scales">Finished</label>
+                <input type="checkbox" id="finished"/>
+            </div>
+            <div class="checkbox-item">
+                <label for="horns">Joinable</label>
+                <input type="checkbox" id="joinable"/>
+            </div>
+            <div class="checkbox-item">
+                <label for="horns">In Progress</label>
+                <input type="checkbox" id="inProgress"/>
+            </div>
         </article>
     </section>
-    <div class="caja_gris" style="display: flex; flex-wrap: wrap;">
+    <div class="caja_gris">
         <article  class="caja_blanca caja_blanca_finder">
             <section>
                 <h3>Game</h3>
@@ -75,12 +77,35 @@ label {
 }
 p,
 label {
-  font:
-    1rem 'Fira Sans',
-    sans-serif;
+  font: 1rem 'Fira Sans', sans-serif;
 }
 
 input {
   margin: 0.4rem;
+}
+
+.search-bar,
+.checkbox-group {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.checkbox-item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.caja_gris {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .search-bar,
+  .checkbox-group {
+    justify-content: center;
+  }
 }
 </style>
