@@ -16,16 +16,6 @@
         <div class="coins">Coins: 27800</div> 
       </div>
     </main>
-    <div id="hamburger-menu" class="menu">
-      <!-- Hamburger menu button -->
-      <div class="hamburger-icon">
-        <button class="btn">☰</button>
-      </div>
-      <!-- Hamburger menu content -->
-      <div class="menu-content">
-        <!-- Your menu content here -->
-      </div>
-    </div>
   </div>
 </template>
 
