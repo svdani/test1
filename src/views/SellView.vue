@@ -1,22 +1,32 @@
 <template>
-
-  <header>
-    <h3 class="titelPage">Sell Attacks</h3>
-  </header>
-  <main>
-    <div class="caja_gris caja_sellattack">
-      <BackpackTable />
-      <div class="buttons-container">
-        <button class="btn btn_move success">&lt;</button>
-        <button class="btn btn_move success">&gt;</button>
-        <button class="btn btn_move success">&lt;&lt;</button>
-        <button class="btn btn_move success">&gt;&gt;</button>   
+  <div id="app">
+    <header>
+      <h3 class="titlePage">Sell Attacks</h3>
+    </header>
+    <main>
+      <div class="caja_gris caja_sellattack">
+        <BackpackTable />
+        <div class="buttons-container">
+          <button class="btn btn_move success"><</button>
+          <button class="btn btn_move success">></button>
+          <button class="btn btn_move success"><<</button>
+          <button class="btn btn_move success">>></button>   
+        </div>
+        <StoreTable />
+        <div class="coins">Coins: 27800</div> 
       </div>
-      <StoreTable />
-      <div class="coins">Coins: 27800</div> 
+    </main>
+    <div id="hamburger-menu" class="menu">
+      <!-- Hamburger menu button -->
+      <div class="hamburger-icon">
+        <button class="btn">☰</button>
+      </div>
+      <!-- Hamburger menu content -->
+      <div class="menu-content">
+        <!-- Your menu content here -->
+      </div>
     </div>
-  </main>
-
+  </div>
 </template>
 
 <script>
@@ -61,137 +71,68 @@ export default {
       // Filtrar los ataques donde on_sale es true o false
       this.filteredAttacksSell = this.attackLista.filter(attack => attack.on_sale);
       this.filteredAttacksBag = this.attackLista.filter(attack => !attack.on_sale);
+    },
+    toggleMenu() {
+      // Toggle the active class on the hamburger menu
+      var menu = document.getElementById('hamburger-menu');
+      menu.classList.toggle('active');
     }
+  },
+  mounted() {
+    // Add click event listener for the hamburger menu button
+    var button = document.querySelector('.hamburger-icon .btn');
+    button.addEventListener('click', this.toggleMenu);
   }
 };
 </script>
 
-<!--<template>
-  <div id="app">
-    <header>
-      <h3 class="titelPage">Sell Attacks</h3>
-    </header>
-    <main>
-      <div class="caja_gris caja_sellattack">
-        <div class="left-table">
-          <table class="custom-table">
-            <thead>
-              <tr>
-                <th>Backpack</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b><i>Kamehame</i></b></td>
-                <td><b><i>3k</i></b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="buttons-container">
-            <button class="btn btn_move success">&lt;</button>
-            <button class="btn btn_move success">&gt;</button>
-            <button class="btn btn_move success">&lt;&lt;</button>
-            <button class="btn btn_move success">&gt;&gt;</button>   
-        </div>
-          
-        <div class="right-table">
-          <table class="custom-table">
-            <thead>
-              <tr>
-                <th>Store</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b><i>Genkidama</i></b></td>
-                <td><b><i>5k</i></b></td>
-              </tr>
-              <tr>
-                <td><b><i>Keizen</i></b></td>
-                <td><b><i>1k</i></b></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="coins">Coins: 27800</div> 
-        </div>
-      </div>
-      <div class="sell-container">
-        <button class="btn success">SELL</button> 
-      </div>
-    </main>
-  </div>
-</template>-->
-  
 <style>
-
-    .caja_sellattack {
-      border-radius: 5px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin: 20px;
-      display: flex;
-      justify-content: space-between;
-      position: relative; 
-    }
-    .buttons-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 10px; 
-    }
-
-    .btn_move {
-      width: 3rem;
-      height: 2rem;
-      padding: 0px;
-      margin: 5px 0;
-      /*color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 
-      */
-    }
-    .coins {
-        position: absolute;
-        top: -1px; 
-        right: 10px;
-    }
-
-  /*
-    .custom-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-  
-    .custom-table th,
-    .custom-table td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-    }
-  
-    .custom-table th {
-      background-color: #f2f2f2;
-    }
-  
-    .left-table,
-    .right-table {
-      width: calc(50% - 10px);  
-    }
-  
-  
-
-
-    .sell-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px; 
-    }
-    */
-  </style>
-  
+  .caja_gris {
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative; 
+  }
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px; 
+  }
+  .btn_move {
+    width: 3rem;
+    height: 2rem;
+    padding: 0px;
+    margin: 5px 0;
+  }
+  .coins {
+    position: absolute;
+    top: -1px; 
+    right: 10px;
+  }
+  .menu {
+    position: relative;
+    z-index: 1;
+  }
+  .hamburger-icon .btn {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .menu-content {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2; /* Higher than the page content */
+  }
+  .menu.active .menu-content {
+    display: block;
+  }
+</style>
