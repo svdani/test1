@@ -107,5 +107,14 @@ input {
   .checkbox-group {
     justify-content: center;
   }
+
+  .caja_gris {
+    flex-direction: column;
+  }
+
+  .caja_blanca {
+    width: 100%;
+  }
 }
+
 </style>
