@@ -114,7 +114,6 @@ export default {
 </script>
 
 <style>
-
 .flex-container {
     display: flex;
     flex-direction: column;

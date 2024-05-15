@@ -1,23 +1,43 @@
 <template>
-        <main class="container">
-            <form>
-                <div class="input-group">
-                <div class="bubble-box">Number of Columns:</div>
-                <input type="text" id="columns">
-                </div>
-                <div class="input-group">
-                <div class="bubble-box">Number of Rows:</div>
-                <input type="text" id="rows">
-                </div>
-                <div class="input-group">
-                    <div class="bubble-box">Player HP:</div>
-                    <input type="text" id="playerHP">
-                </div>
-                <button class="button">Start Game</button>
-            </form>
-        </main>
-</template>
-
+    <main class="container">
+      <form @submit.prevent="startGame">
+        <div class="input-group">
+          <div class="bubble-box">Board Size:</div>
+          <input type="text" id="rows" v-model="numRows">
+        </div>
+        <div class="input-group">
+          <div class="bubble-box">Player HP:</div>
+          <input type="text" id="playerHP" v-model="playerHP">
+        </div>
+        <button type="submit" class="button">Start Game</button>
+      </form>
+      <section style="display: flex;">
+        <Board :numRows="numRows" :numCols="numRows" />
+      </section>
+    </main>
+  </template>
+  
+  <script>
+  import Board from '../components/Board.vue';
+  
+  export default {
+    components: {
+      Board
+    },
+    data() {
+      return {
+        numRows: 0,
+        numCols: 0,
+        playerHP: 0
+      };
+    },
+    methods: {
+      startGame() {
+        //Game
+      }
+    }
+  };
+  </script>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -37,7 +57,7 @@
         justify-content: space-between;
     }
     .input-group {
-        width: calc(33.33% - 20px); /* Adjust width here */
+        width: calc(33.33% - 20px);
         margin-bottom: 15px;
     }
     .bubble-box {
@@ -46,29 +66,29 @@
         color: #333;
         border-radius: 5px;
         font-weight: bold;
-        display: inline-block; /* Make the bubble inline block */
-        white-space: nowrap; /* Prevent text from wrapping */
+        display: inline-block;
+        white-space: nowrap;
         font-size: 14px;
         margin-right: 10px;
         border: 1px solid #999;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         text-align: center;
-        min-width: 140px; /* Minimum width of the bubble */
+        min-width: 140px;
     }
     .input-group label {
         display: block;
         margin-bottom: 5px;
     }
     .input-group input[type="text"] {
-        width: calc(100% - 10px); /* Adjust width here */
+        width: calc(100% - 10px);
         padding: 8px;
         border: none;
         border-radius: 5px;
         box-sizing: border-box;
-        margin-top: 5px; /* Add space between bubble and input box */
+        margin-top: 5px;
     }
     .button {
-        width: calc(100% - 20px); /* Adjust width here */
+        width: calc(100% - 20px);
         padding: 10px;
         background-color: #a3a28c;
         color: white;
