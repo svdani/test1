@@ -1,24 +1,25 @@
 <template>
     
     
-    <div class="left-table">
-        <table class="custom-table">
-        <thead>
-          <tr>
-            <th>Attack Name</th>
-            <th>Price</th>
+  <div class="left-table">
+      <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Attack Name</th>
+          <th>Price</th>
 
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(attack, index) in attacks" :key="index">
-            <td>{{ attack.attack_ID }}</td>
-            <td>{{ attack.price }}</td>
+        </tr>
+      </thead>
+      <tbody>
+<!--     <tr v-for="(attack, index) in attacks" :key="index">-->   
+        <tr v-for="(attack, index) in filteredAttacks" :key="index">
+          <td>{{ attack.attack_ID }}</td>
+          <td>{{ attack.price }}$</td>
 
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -29,28 +30,34 @@ export default {
     attacks: {
       type: Array,
       required: true
-    },
-    attackIDToFilter: {
-      type: Number, // Tipo específico del ID a comparar
-      required: true
     }
   },
   data() {
     return {
-      filteredAttacks: [] // Array para almacenar los ataques filtrados
+      filteredAttacks: []
     };
   },
   methods: {
+    //sellAttack(attack) {
+    //  console.log(`Selling attack: ${attack.attack_ID}`);
+    // 
+    //},
     getAttacksList() {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       const apiUrl = 'https://balandrau.salle.url.edu/i3/shop/attacks';
 
-      axios.get(apiUrl, { headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` } })
+      axios.get(apiUrl, { headers: { 'Accept': 'application/json', 'Bearer': token } })
         .then(response => {
           if (response.status === 200) {
-            console.log(response.data);
-            // Filtrar los ataques basados en el ID proporcionado desde el padre
-            this.filteredAttacks = response.data.filter(attack => attack.attack_ID === this.attackIDToFilter);
+            const apiAttacks = response.data;
+            console.log("this.apiAttacks=="+apiAttacks)
+            console.log(apiAttacks)
+            // Filtrar apiAttacks para obtener solo aquellos que coincidan con attack_ID en this.attacks
+            this.filteredAttacks = apiAttacks.filter(apiAttack => 
+              this.attacks.some(attack => attack.attack_ID === apiAttack.attack_ID)
+            );
+            console.log("this.filteredAttacks=="+this.filteredAttacks)
+            console.log(this.filteredAttacks)
           } else {
             console.error('Error al obtener datos del jugador:', response.statusText);
           }
@@ -61,7 +68,6 @@ export default {
     }
   },
   mounted() {
-    // Llamar al método para obtener y filtrar los ataques al cargar el componente
     this.getAttacksList();
   }
 };
