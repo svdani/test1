@@ -7,64 +7,68 @@
           <tr>
             <th>Attack Name</th>
             <th>Price</th>
-            <th>Action</th>
+
           </tr>
         </thead>
         <tbody>
           <tr v-for="(attack, index) in attacks" :key="index">
             <td>{{ attack.attack_ID }}</td>
             <td>{{ attack.price }}</td>
-            <td>
-              <button @click="sellAttack(attack)">Sell</button>
-            </td>
+
           </tr>
         </tbody>
       </table>
     </div>
 </template>
-<!-- <h3>Attacks for Sale</h3>
-<template>
-    <div class="left-table">
-      <table class="custom-table">
-        <thead>
-          <tr>
-            <th>Backpack</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in backpackItems" :key="index">
-            <td><b><i>{{ item.name }}</i></b></td>
-            <td><b><i>{{ item.price }}</i></b></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </template>
--->  
-
-
 
 <script>
-  export default {
-    props: {
-      attacks: {
-        type: Array,
-        required: true
-      }
+import axios from 'axios';
+
+export default {
+  props: {
+    attacks: {
+      type: Array,
+      required: true
     },
-    methods: {
-      sellAttack(attack) {
-        // Lógica para vender el ataque
-        console.log(`Selling attack: ${attack.attack_ID}`);
-        // Realizar la petición a la API para cambiar el estado del ataque a vendido
-      }
+    attackIDToFilter: {
+      type: Number, // Tipo específico del ID a comparar
+      required: true
     }
-  };
+  },
+  data() {
+    return {
+      filteredAttacks: [] // Array para almacenar los ataques filtrados
+    };
+  },
+  methods: {
+    getAttacksList() {
+      const token = localStorage.getItem('token');
+      const apiUrl = 'https://balandrau.salle.url.edu/i3/shop/attacks';
+
+      axios.get(apiUrl, { headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` } })
+        .then(response => {
+          if (response.status === 200) {
+            console.log(response.data);
+            // Filtrar los ataques basados en el ID proporcionado desde el padre
+            this.filteredAttacks = response.data.filter(attack => attack.attack_ID === this.attackIDToFilter);
+          } else {
+            console.error('Error al obtener datos del jugador:', response.statusText);
+          }
+        })
+        .catch(error => {
+          console.error('Error al realizar la solicitud:', error);
+        });
+    }
+  },
+  mounted() {
+    // Llamar al método para obtener y filtrar los ataques al cargar el componente
+    this.getAttacksList();
+  }
+};
 </script>
 
 <style scoped>
-/* Estilos específicos para BackpackTable.vue */
+
 .custom-table {
   width: 100%;
   border-collapse: collapse;

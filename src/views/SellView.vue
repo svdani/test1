@@ -5,14 +5,12 @@
   </header>
   <main>
     <div class="caja_gris caja_sellattack">
-      <BackpackTable />
+      <BackpackTable :attacks="filteredAttacksBag" style="margin-right: 5px;"/>
       <div class="buttons-container">
-        <button class="btn btn_move success">&lt;</button>
-        <button class="btn btn_move success">&gt;</button>
-        <button class="btn btn_move success">&lt;&lt;</button>
-        <button class="btn btn_move success">&gt;&gt;</button>   
+       <!-- <button class="btn btn_move success">&lt;&lt;</button>
+        <button class="btn btn_move success">&gt;&gt;</button>  --> 
       </div>
-      <StoreTable />
+      <StoreTable :attacks="filteredAttacksSell" style="margin-left: 5px;"/>
       <div class="coins">Coins: 27800</div> 
     </div>
   </main>
@@ -41,6 +39,7 @@ export default {
   },
   methods: {
     fetchAttackPlayerData() {
+      console.log("fetchAttackPlayerData");
       const token = localStorage.getItem('token');
       const apiUrl = 'https://balandrau.salle.url.edu/i3/players/attacks';
 
@@ -48,6 +47,7 @@ export default {
         .then(response => {
           if (response.status === 200) {
             this.attackLista = response.data;
+            console.log(response.data);
             this.filterAttacks(); // Filtrar los ataques después de recibir los datos
           } else {
             console.error('Error al obtener datos del jugador:', response.statusText);
@@ -60,73 +60,30 @@ export default {
     filterAttacks() {
       // Filtrar los ataques donde on_sale es true o false
       this.filteredAttacksSell = this.attackLista.filter(attack => attack.on_sale);
+      console.log(this.filteredAttacksSell)
       this.filteredAttacksBag = this.attackLista.filter(attack => !attack.on_sale);
+      console.log(this.filteredAttacksBag)
     }
   }
 };
 </script>
 
-<!--<template>
-  <div id="app">
-    <header>
-      <h3 class="titelPage">Sell Attacks</h3>
-    </header>
-    <main>
-      <div class="caja_gris caja_sellattack">
-        <div class="left-table">
-          <table class="custom-table">
-            <thead>
-              <tr>
-                <th>Backpack</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b><i>Kamehame</i></b></td>
-                <td><b><i>3k</i></b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="buttons-container">
-            <button class="btn btn_move success">&lt;</button>
-            <button class="btn btn_move success">&gt;</button>
-            <button class="btn btn_move success">&lt;&lt;</button>
-            <button class="btn btn_move success">&gt;&gt;</button>   
-        </div>
-          
-        <div class="right-table">
-          <table class="custom-table">
-            <thead>
-              <tr>
-                <th>Store</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b><i>Genkidama</i></b></td>
-                <td><b><i>5k</i></b></td>
-              </tr>
-              <tr>
-                <td><b><i>Keizen</i></b></td>
-                <td><b><i>1k</i></b></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="coins">Coins: 27800</div> 
-        </div>
-      </div>
-      <div class="sell-container">
-        <button class="btn success">SELL</button> 
-      </div>
-    </main>
-  </div>
-</template>-->
-  
 <style>
+    input[type="number"] {
+      width: 200px; /* Ancho del campo de entrada */
+      padding: 10px; /* Espacio interno */
+      font-size: 16px; /* Tamaño de la fuente */
+      border: 1px solid #ccc; /* Borde del campo */
+      border-radius: 4px; /* Borde redondeado */
+      box-sizing: border-box; /* Incluye el borde y el relleno en el ancho total */
+    }
 
+    /* Estilo para resaltar cuando el campo tiene el foco */
+    input[type="number"]:focus {
+      outline: none; /* Elimina el contorno predeterminado */
+      border-color: #007bff; /* Cambia el color del borde al enfocarse */
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocarse */
+    }
     .caja_sellattack {
       border-radius: 5px;
       padding: 20px;
@@ -134,7 +91,6 @@ export default {
       margin: 20px;
       display: flex;
       justify-content: space-between;
-      position: relative; 
     }
     .buttons-container {
       display: flex;
@@ -149,12 +105,7 @@ export default {
       height: 2rem;
       padding: 0px;
       margin: 5px 0;
-      /*color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 
-      */
+
     }
     .coins {
         position: absolute;
@@ -162,36 +113,6 @@ export default {
         right: 10px;
     }
 
-  /*
-    .custom-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-  
-    .custom-table th,
-    .custom-table td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-    }
-  
-    .custom-table th {
-      background-color: #f2f2f2;
-    }
-  
-    .left-table,
-    .right-table {
-      width: calc(50% - 10px);  
-    }
-  
-  
 
-
-    .sell-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px; 
-    }
-    */
   </style>
   

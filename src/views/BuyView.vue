@@ -41,10 +41,10 @@ import axios from 'axios';
     },
     created() {
       
-      this.fetchPlayerData();
+      this.getAttacksList();
     },
     methods: {
-      fetchPlayerData() {
+      getAttacksList() {
         const token = localStorage.getItem("token");
         const apiUrl = 'https://balandrau.salle.url.edu/i3/shop/attacks';
   
