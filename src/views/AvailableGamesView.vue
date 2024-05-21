@@ -1,59 +1,16 @@
 <template>
     <div class="caja_gris_available_games_responsive caja_gris_joinable">
         <div style="display: flex; justify-content: space-between;">
-            <section class="left-align">
-                <article style="display: flex;">
-                    <div style="margin-top: 10px;">
-                        <input type="text" id="site-search"/>
-                    </div>
-                    <button class="btn success btn-right">Search</button>
-                </article>
-            </section>
             
             
+        <SearchBar />
         <GameFilter />
 
+        </div>
 
-
+        <AvailableGameList />
 
         </div>
-        <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
-                <p>Available Game 1</p>
-                <button class="btn-small success btn-join">Join!</button>
-            </section>
-        </article>
-        <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
-                <p>Available Game 2</p>
-                <button class="btn-small success btn-join">Join!</button>
-            </section>
-        </article>
-        <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
-                <p>Available Game 3</p>
-                <button class="btn-small success btn-join">Join!</button>
-            </section>
-        </article>
-        <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
-                <p>Available Game 4</p>
-                <button class="btn-small success btn-join">Join!</button>
-            </section>
-        </article>
-        <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
-                <p>Available Game 5</p>
-                <button class="btn-small success btn-join">Join!</button>
-            </section>
-        </article>
-        <article style="display: flex; align-items: center;">
-            <section class="caja_blanca caja_blanca_joinable" style="justify-content: space-between;">
-                <p>Available Game 6</p>
-                <button class="btn-small success btn-join">Join!</button>
-            </section>
-        </article>
-    </div>
 
 </template>
 
@@ -70,14 +27,19 @@
 <!---->
 <script>
 import GameFilter from '@/components/GameFilter.vue';
+import SearchBar from '@/components/SearchBar.vue';
+import AvailableGameList from '@/components/AvailableGameList.vue';
 import axios from 'axios';
 
-export default {
-    components: {
-        GameFilter
+export default { 
+    components: { 
+        GameFilter, 
+        SearchBar,
+        AvailableGameList
+        
     },
-  data() {
-    return {
+  data() { 
+    return { 
       availableGames: [],
       joinableGames: [],
       inProgressGames: [],
@@ -91,14 +53,14 @@ export default {
       const apiUrl = `https://balandrau.salle.url.edu/i3/players/arenas/current`;
       const token = localStorage.getItem("token");
 
-      const headers = {
+      const headers = {  //Header Peticio
         'Accept': 'application/json',
         'Bearer': token
       };
 
-      axios.get(apiUrl, { headers })
-        .then(response => {
-          if (response.status === 200) {
+      axios.get(apiUrl, { headers }) //Peticio GET
+        .then(response => { 
+          if (response.status === 200) { 
             // Assuming response.data contains the current arenas data
             console.log('Current Arenas Data:', response.data);
 
