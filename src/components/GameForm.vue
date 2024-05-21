@@ -8,7 +8,9 @@
         <div class="bubble-box">Player HP:</div>
         <input type="text" id="playerHP" v-model="playerHP">
       </div>
-      <button type="submit" class="button">Start Game</button>
+      <a href="../game" class="link">
+        <button type="submit" class="button" onclick="">Start Game</button>
+      </a>  
     </form>
   </template>
   

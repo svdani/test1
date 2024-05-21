@@ -17,6 +17,11 @@ const router = createRouter({
       component: () => import('../views/CreatePlayerView.vue')
     },
     {
+      path: '/gameView',
+      name: 'gameView',
+      component: () => import('../views/GameView.vue')
+    },
+    {
       path: '/loginPlayer',
       name: 'loginPlayer',
       component: () => import('../views/LoginPlayerView.vue')
