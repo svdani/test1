@@ -69,21 +69,7 @@ export default {
 </script>
 
 <style>
-    input[type="number"] {
-      width: 200px; /* Ancho del campo de entrada */
-      padding: 10px; /* Espacio interno */
-      font-size: 16px; /* Tamaño de la fuente */
-      border: 1px solid #ccc; /* Borde del campo */
-      border-radius: 4px; /* Borde redondeado */
-      box-sizing: border-box; /* Incluye el borde y el relleno en el ancho total */
-    }
-
-    /* Estilo para resaltar cuando el campo tiene el foco */
-    input[type="number"]:focus {
-      outline: none; /* Elimina el contorno predeterminado */
-      border-color: #007bff; /* Cambia el color del borde al enfocarse */
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocarse */
-    }
+    
     .caja_sellattack {
       border-radius: 5px;
       padding: 20px;
