@@ -1,26 +1,32 @@
 <template>
     <form v-on:submit.prevent>
       <div class="input-group">
+        <div class="bubble-box">Game Name:</div>
+        <input type="text" id="playerHP" v-model="gameName">
+      </div>
+      <div class="input-group">
         <div class="bubble-box">Board Size:</div>
-        <input type="text" id="rows" v-model="boardSize" @input="changeBoardSize">
+        <input class="form-control" type="number" id="rows" v-model="boardSize" @input="changeBoardSize">
       </div>
       <div class="input-group">
         <div class="bubble-box">Player HP:</div>
-        <input type="text" id="playerHP" v-model="playerHP">
+        <input class="form-control" type="number" id="playerHP" v-model="playerHP">
       </div>
       <button type="button" class="button" v-on:click="startGame">Start Game</button>
     </form>
   </template>
   
   <script>
-import router from '@/router';
-
+  import axios from 'axios';
+  import router from '@/router';
+  
   export default {
     name: 'GameForm',
     data() {
       return {
-        boardSize: 0,
-        playerHP: 0
+        size: 0,
+        HP_max: 0,
+        game_ID: ''
       };
     },
     methods: {
@@ -28,7 +34,27 @@ import router from '@/router';
         this.$emit('change-board', { boardSize: this.boardSize, playerHP: this.playerHP });
     },
       startGame() {
-        router.push("../game")
+        const apiUrl = 'https://balandrau.salle.url.edu/i3/arenas';
+        const token = localStorage.getItem("token");
+        const config = {
+          headers: { 'Content-Type': 'application/json', 'Bearer': token, 'Authorization': `Bearer ${token}`}
+        };
+        const gameInfo ={
+          game_ID: this.gameName,
+          size: this.boardSize,
+          HP_max: this.playerHP
+          
+        }
+        axios.post(apiUrl, gameInfo, config)
+        .then(response => {
+          console.log('Response:', response.data);
+          router.push("../game")
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Aquí puedes manejar errores, como mostrar un mensaje de error al usuario
+        });
+        
         //this.$emit('game-start', { boardSize: this.boardSize, playerHP: this.playerHP });
       }
     }
