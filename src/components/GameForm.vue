@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="startGame">
+    <form v-on:submit.prevent>
       <div class="input-group">
         <div class="bubble-box">Board Size:</div>
         <input type="text" id="rows" v-model="boardSize" @input="changeBoardSize">
@@ -8,13 +8,13 @@
         <div class="bubble-box">Player HP:</div>
         <input type="text" id="playerHP" v-model="playerHP">
       </div>
-      <a href="../game" class="link">
-        <button type="submit" class="button" onclick="">Start Game</button>
-      </a>  
+      <button type="button" class="button" v-on:click="startGame">Start Game</button>
     </form>
   </template>
   
   <script>
+import router from '@/router';
+
   export default {
     name: 'GameForm',
     data() {
@@ -28,7 +28,8 @@
         this.$emit('change-board', { boardSize: this.boardSize, playerHP: this.playerHP });
     },
       startGame() {
-        this.$emit('game-start', { boardSize: this.boardSize, playerHP: this.playerHP });
+        router.push("../game")
+        //this.$emit('game-start', { boardSize: this.boardSize, playerHP: this.playerHP });
       }
     }
   };

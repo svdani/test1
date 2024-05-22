@@ -3,23 +3,57 @@
       <article class="flex-container">
         <section class="white-box">
           <p>Player Name</p>
-          <p>a_player_name</p>
+          <p>{{ playerStats.name }}</p>
         </section>
         <section class="white-box">
           <p>Games</p>
-          <p>24</p>
+          <p>{{ playerStats.games }}</p>
         </section>
         <section class="white-box">
           <p>Wins</p>
-          <p class="green-text">21</p>
+          <p class="green-text">{{ playerStats.wins }}</p>
         </section>
         <section class="white-box">
           <p>Losses</p>
-          <p class="red-text">3</p>
+          <p class="red-text">{{ playerStats.losses }}</p>
         </section>
       </article>
     </section>
   </template>
+  
+  <script>
+  import axios from 'axios';
+  
+  export default {
+    data() {
+      return {
+        playerStats: {},
+        token: localStorage.getItem("token"),
+        user: localStorage.getItem("user") 
+      };
+    },
+    created() {
+      this.fetchPlayerStatistics();
+    },
+    methods: {
+      async fetchPlayerStatistics() {
+        try {
+          const playerId = this.user; // Replace with the actual player ID
+          const response = await axios.get(`/players/${playerId}/statistics`);
+          this.playerStats = {
+            name: response.data.name, // Assuming the API returns a name field
+            games: response.data.games, // Assuming the API returns a games field
+            wins: response.data.wins, // Assuming the API returns a wins field
+            losses: response.data.losses // Assuming the API returns a losses field
+          };
+        } catch (error) {
+          console.error('Error fetching player statistics:', error);
+        }
+      }
+    }
+  };
+  </script>
+  
   
   <style>
   .grey_box {

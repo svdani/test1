@@ -45,6 +45,7 @@
         </section>
     </div>
 </template>
+
 <style>
 label {
   display: block;
