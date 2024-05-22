@@ -26,9 +26,6 @@
       updateBoardSize(data) {
       this.boardSize = parseInt(data.boardSize);
       },
-      startGame() {
-        //Game
-      }
     }
   };
   </script>
