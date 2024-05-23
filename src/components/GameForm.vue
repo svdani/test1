@@ -30,35 +30,76 @@
       };
     },
     methods: {
+    
     changeBoardSize() {
         this.$emit('change-board', { boardSize: this.boardSize, playerHP: this.playerHP });
     },
-      startGame() {
-        const apiUrl = 'https://balandrau.salle.url.edu/i3/arenas';
-        const token = localStorage.getItem("token");
+    async getCurrentGame () {
+      const urlCurrentGame = 'https://balandrau.salle.url.edu/i3/players/arenas/current';
+      const token = localStorage.getItem("token");
+        
         const config = {
           headers: { 'Content-Type': 'application/json', 'Bearer': token, 'Authorization': `Bearer ${token}`}
         };
-        const gameInfo ={
-          game_ID: this.gameName,
-          size: this.boardSize,
-          HP_max: this.playerHP
-          
-        }
-        axios.post(apiUrl, gameInfo, config)
-        .then(response => {
-          console.log('Response:', response.data);
-          router.push("../game")
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          // Aquí puedes manejar errores, como mostrar un mensaje de error al usuario
-        });
-        
-        //this.$emit('game-start', { boardSize: this.boardSize, playerHP: this.playerHP });
+      try {
+        const response = await axios.get(urlCurrentGame, config);
+        return response.data;
+      } catch (error) {
+        console.error('Error en la solicitud GET:', error);
+        throw error;
       }
+    },startGame() {
+      const apiUrl = 'https://balandrau.salle.url.edu/i3/arenas';
+      const token = localStorage.getItem("token");
+
+      const config = {
+        headers: { 'Content-Type': 'application/json', 'Bearer': token, 'Authorization': `Bearer ${token}`}
+      };
+      const gameInfo = {
+        game_ID: this.gameName,
+        size: this.boardSize,
+        HP_max: this.playerHP
+      };
+
+      axios.post(apiUrl, gameInfo, config)
+        .then(async response => {
+          console.log('Response:', response.data);
+          router.push("../game");
+        })
+        .catch(async error => {
+          if (error.response && error.response.status === 403) {
+            console.log('Error 403: Ya estás en un juego');
+            let currentGame = await this.getCurrentGame();
+            if (currentGame.HP_max > 0) {
+              this.deleteCurrentGame(currentGame.game_ID);
+            }
+            router.push("../game");
+          } else {
+            console.error('Error:', error);
+            console.log('FUCKING ERROR DE MERDA CABRON PORTO MES DE 6 DIES');
+          }
+        });
+    },
+      deleteCurrentGame(id) {
+        const apiUrlDeleteGame = `https://balandrau.salle.url.edu/i3/arenas/${id}/play`;
+        const token = localStorage.getItem("token");
+        
+        const config = {
+          headers: { 'Content-Type': 'application/json', 'Bearer': token, 'Authorization': `Bearer ${token}`}
+        };
+        axios.delete(apiUrlDeleteGame, config)
+        .then(async response=>{
+          if(response.status === 204){
+            console.log("Delete successfull");
+          }else{
+            console.log(response.error);
+          }
+        });
+      }
+
     }
   };
+  
   </script>
   
   <style scoped>
