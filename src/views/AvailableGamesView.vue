@@ -1,6 +1,7 @@
 <template>
     <div class="caja_gris_available_games_responsive caja_gris_joinable">
       <div style="display: flex; justify-content: space-between;">
+        <SearchBar @update-search="updateSearchQuery" />
         <GameFilter @update-filters="applyFilters" />
       </div>
       <AvailableGameList :games="filteredGames" />
@@ -10,12 +11,14 @@
   <script>
   import GameFilter from '@/components/GameFilter.vue';
   import AvailableGameList from '@/components/AvailableGameList.vue';
+  import SearchBar from '@/components/SearchBar.vue';
   import axios from 'axios';
   
   export default {
     components: {
       GameFilter,
-      AvailableGameList
+      AvailableGameList,
+      SearchBar
     },
     data() {
       return {
@@ -24,7 +27,8 @@
         filters: {
           joinable: false,
           inProgress: false
-        }
+        },
+        searchQuery: ''
       };
     },
     mounted() {
@@ -55,9 +59,19 @@
       },
       applyFilters(filters) {
         this.filters = filters;
+        this.filterGames();
+      },
+      updateSearchQuery(searchQuery) {
+        this.searchQuery = searchQuery;
+        this.filterGames();
+      },
+      filterGames() {
         this.filteredGames = this.gameList.filter(game => {
-          return (!this.filters.joinable || (!game.start && !game.finished)) &&
-                 (!this.filters.inProgress || (game.start && !game.finished));
+          const matchesFilters = (!this.filters.joinable || (!game.start && !game.finished)) &&
+                                 (!this.filters.inProgress || (game.start && !game.finished));
+          const matchesSearchQuery = game.game_ID.toLowerCase().includes(this.searchQuery.toLowerCase());
+  
+          return matchesFilters && matchesSearchQuery;
         });
       }
     }
@@ -70,3 +84,4 @@
     justify-content: space-between;
   }
   </style>
+  
