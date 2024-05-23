@@ -1,102 +1,72 @@
 <template>
     <div class="caja_gris_available_games_responsive caja_gris_joinable">
-        <div style="display: flex; justify-content: space-between;">
-            <!--<SearchBar />-->
-            <GameFilter />
-        </div>
-        <AvailableGameList :games="gameList" />
-        </div>
-</template>
-
-<style scoped> 
-
-    .available_div_responsive {
-    display: flex; 
-    justify-content: space-between;
-    
-}
-
-
-</style>
-<!---->
-<script>
-import GameFilter from '@/components/GameFilter.vue';
-//import SearchBar from '@/components/SearchBar.vue';
-import AvailableGameList from '@/components/AvailableGameList.vue';
-import axios from 'axios';
-
-export default { 
-    components: { 
-        GameFilter, 
-        //SearchBar,
-        AvailableGameList
-        
+      <div style="display: flex; justify-content: space-between;">
+        <GameFilter @update-filters="applyFilters" />
+      </div>
+      <AvailableGameList :games="filteredGames" />
+    </div>
+  </template>
+  
+  <script>
+  import GameFilter from '@/components/GameFilter.vue';
+  import AvailableGameList from '@/components/AvailableGameList.vue';
+  import axios from 'axios';
+  
+  export default {
+    components: {
+      GameFilter,
+      AvailableGameList
     },
-  data() { 
-    return { 
-      availableGames: [],
-      joinableGames: [],
-      inProgressGames: [],
-      gameList: [],
-    };
-  },
-  mounted() {
-    this.fetchCurrentArenas();
-  },
-  methods: {
-    fetchCurrentArenas() {
-      const apiUrl = `https://balandrau.salle.url.edu/i3/players/arenas/current`;
-      const token = localStorage.getItem("token");
-
-      const headers = {  //Header Peticio
-        'Accept': 'application/json',
-        'Bearer': token
+    data() {
+      return {
+        gameList: [],
+        filteredGames: [],
+        filters: {
+          joinable: false,
+          inProgress: false
+        }
       };
-
-      axios.get(apiUrl, { headers }) //Peticio GET
-        .then(response => { 
-          if (response.status === 200) { 
-            // Assuming response.data contains the current arenas data
-            console.log('Current Arenas Data:', response.data);
-            this.gameList = response.data;
-/*
-            // Filter available games
-            this.availableGames = response.data.filter(game => !game.finished);
-
-            if (this.joinableChecked) {
-              this.joinableGames = this.availableGames.filter(game => !game.start);
+    },
+    mounted() {
+      this.fetchCurrentArenas();
+    },
+    methods: {
+      fetchCurrentArenas() {
+        const apiUrl = `https://balandrau.salle.url.edu/i3/players/arenas/current`;
+        const token = localStorage.getItem("token");
+  
+        const headers = {
+          'Accept': 'application/json',
+          'Bearer': token
+        };
+  
+        axios.get(apiUrl, { headers })
+          .then(response => {
+            if (response.status === 200) {
+              this.gameList = response.data;
+              this.filteredGames = this.gameList;
             } else {
-              this.joinableGames = [];
+              console.error('Error fetching current arenas:', response.statusText);
             }
-
-            // Apply in-progress filter if checkbox is checked
-            if (this.inProgressChecked) {
-              this.inProgressGames = this.availableGames.filter(game => game.start);
-            } else {
-              this.inProgressGames = [];
-            }
-
-            // Filter joinable games
-            this.joinableGames = this.availableGames.filter(game => !game.start);
-
-            // Filter in-progress games
-            this.inProgressGames = this.availableGames.filter(game => game.start);
-
-            console.log('Available Games:', this.availableGames);
-            console.log('Joinable Games:', this.joinableGames);
-            console.log('In-progress Games:', this.inProgressGames);
-
-            */
-
-          } else {
-            console.error('Error fetching current arenas:', response.statusText);
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching current arenas:', error);
+          })
+          .catch(error => {
+            console.error('Error fetching current arenas:', error);
+          });
+      },
+      applyFilters(filters) {
+        this.filters = filters;
+        this.filteredGames = this.gameList.filter(game => {
+          return (!this.filters.joinable || (!game.start && !game.finished)) &&
+                 (!this.filters.inProgress || (game.start && !game.finished));
         });
+      }
     }
   }
-}
-</script>
-
+  </script>
+  
+  <style scoped>
+  .available_div_responsive {
+    display: flex;
+    justify-content: space-between;
+  }
+  </style>
