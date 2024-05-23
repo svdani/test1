@@ -1,17 +1,11 @@
 <template>
     <div class="caja_gris_available_games_responsive caja_gris_joinable">
         <div style="display: flex; justify-content: space-between;">
-            
-            
-        <SearchBar />
-        <GameFilter />
-
+            <!--<SearchBar />-->
+            <GameFilter />
         </div>
-
-        <AvailableGameList />
-
+        <AvailableGameList :games="gameList" />
         </div>
-
 </template>
 
 <style scoped> 
@@ -27,14 +21,14 @@
 <!---->
 <script>
 import GameFilter from '@/components/GameFilter.vue';
-import SearchBar from '@/components/SearchBar.vue';
+//import SearchBar from '@/components/SearchBar.vue';
 import AvailableGameList from '@/components/AvailableGameList.vue';
 import axios from 'axios';
 
 export default { 
     components: { 
         GameFilter, 
-        SearchBar,
+        //SearchBar,
         AvailableGameList
         
     },
@@ -43,6 +37,7 @@ export default {
       availableGames: [],
       joinableGames: [],
       inProgressGames: [],
+      gameList: [],
     };
   },
   mounted() {
@@ -63,7 +58,8 @@ export default {
           if (response.status === 200) { 
             // Assuming response.data contains the current arenas data
             console.log('Current Arenas Data:', response.data);
-
+            this.gameList = response.data;
+/*
             // Filter available games
             this.availableGames = response.data.filter(game => !game.finished);
 
@@ -89,6 +85,8 @@ export default {
             console.log('Available Games:', this.availableGames);
             console.log('Joinable Games:', this.joinableGames);
             console.log('In-progress Games:', this.inProgressGames);
+
+            */
 
           } else {
             console.error('Error fetching current arenas:', response.statusText);
