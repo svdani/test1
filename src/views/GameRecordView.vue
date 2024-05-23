@@ -31,34 +31,39 @@
     </div>
   </template>
   
-<script>
-import axios from 'axios'; 
-
-export default {
-  data() {
-    return {
-      matches: [] // Initialize matches as an empty array
-    };
-  },
-  created() {
-    this.fetchPlayerStatistics();
-  },
-  methods: {
-    async fetchPlayerStatistics() {
-      try {
-        const playerId = 'your-player-id'; // Replace with the actual player ID
-        const response = await axios.get(`/players/${playerId}/statistics`);
-        this.matches = response.data.matches; // Assuming the API response has a matches array
-      } catch (error) {
-        console.error('Error fetching player statistics:', error);
-      }
+  <script>
+  import axios from 'axios'; 
+  
+  export default {
+    data() {
+      return {
+        matches: [], // Initialize matches as an empty array
+        token: localStorage.getItem("token"),
+        user: localStorage.getItem("user") // Retrieve the user from localStorage
+      };
     },
-    rewatch(match) {
-      window.open(match.rewatch, '_blank');
+    created() {
+      this.fetchPlayerStatistics();
+    },
+    methods: {
+      async fetchPlayerStatistics() {
+        try {
+          const playerId = this.user; // Use the user value from data property
+          const response = await axios.get(`/players/${playerId}/statistics`, {
+            headers: { 'Authorization': `Bearer ${this.token}` } // Assuming you need to send the token in the header
+          });
+          this.matches = response.data.matches; // Assuming the API response has a matches array
+        } catch (error) {
+          console.error('Error fetching player statistics:', error);
+        }
+      },
+      rewatch(match) {
+        window.open(match.rewatch, '_blank');
+      }
     }
-  }
-};
-</script>
+  };
+  </script>
+  
 
 <style>
   .matches-list {

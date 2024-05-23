@@ -1,38 +1,105 @@
 <template>
     <form v-on:submit.prevent>
       <div class="input-group">
+        <div class="bubble-box">Game Name:</div>
+        <input type="text" id="playerHP" v-model="gameName">
+      </div>
+      <div class="input-group">
         <div class="bubble-box">Board Size:</div>
-        <input type="text" id="rows" v-model="boardSize" @input="changeBoardSize">
+        <input class="form-control" type="number" id="rows" v-model="boardSize" @input="changeBoardSize">
       </div>
       <div class="input-group">
         <div class="bubble-box">Player HP:</div>
-        <input type="text" id="playerHP" v-model="playerHP">
+        <input class="form-control" type="number" id="playerHP" v-model="playerHP">
       </div>
       <button type="button" class="button" v-on:click="startGame">Start Game</button>
     </form>
   </template>
   
   <script>
-import router from '@/router';
-
+  import axios from 'axios';
+  import router from '@/router';
+  
   export default {
     name: 'GameForm',
     data() {
       return {
-        boardSize: 0,
-        playerHP: 0
+        size: 0,
+        HP_max: 0,
+        game_ID: ''
       };
     },
     methods: {
+    
     changeBoardSize() {
         this.$emit('change-board', { boardSize: this.boardSize, playerHP: this.playerHP });
     },
-      startGame() {
-        router.push("../game")
-        //this.$emit('game-start', { boardSize: this.boardSize, playerHP: this.playerHP });
+    async getCurrentGame () {
+      const urlCurrentGame = 'https://balandrau.salle.url.edu/i3/players/arenas/current';
+      const token = localStorage.getItem("token");
+        
+        const config = {
+          headers: { 'Content-Type': 'application/json', 'Bearer': token, 'Authorization': `Bearer ${token}`}
+        };
+      try {
+        const response = await axios.get(urlCurrentGame, config);
+        return response.data;
+      } catch (error) {
+        console.error('Error en la solicitud GET:', error);
+        throw error;
       }
+    },startGame() {
+      const apiUrl = 'https://balandrau.salle.url.edu/i3/arenas';
+      const token = localStorage.getItem("token");
+
+      const config = {
+        headers: { 'Content-Type': 'application/json', 'Bearer': token, 'Authorization': `Bearer ${token}`}
+      };
+      const gameInfo = {
+        game_ID: this.gameName,
+        size: this.boardSize,
+        HP_max: this.playerHP
+      };
+
+      axios.post(apiUrl, gameInfo, config)
+        .then(async response => {
+          console.log('Response:', response.data);
+          router.push("../game");
+        })
+        .catch(async error => {
+          if (error.response && error.response.status === 403) {
+            console.log('Error 403: Ya estás en un juego');
+            let currentGame = await this.getCurrentGame();
+            if (currentGame.HP_max > 0) {
+              this.deleteCurrentGame(currentGame.game_ID);
+            }
+            router.push("../game");
+          } else {
+            console.error('Error:', error);
+            console.log('FUCKING ERROR DE MERDA CABRON PORTO MES DE 6 DIES');
+          }
+        });
+    },
+      deleteCurrentGame(id) {
+        const apiUrlDeleteGame = `https://balandrau.salle.url.edu/i3/arenas/${id}/play`;
+        const token = localStorage.getItem("token");
+        
+        const config = {
+          headers: { 'Content-Type': 'application/json', 'Bearer': token, 'Authorization': `Bearer ${token}`}
+        };
+        axios.delete(apiUrlDeleteGame, config)
+        .then(async response=>{
+          if(response.status === 204){
+            console.log("Delete successfull");
+          }else{
+            console.log(response.error);
+          }
+        });
+      }
+
     }
   };
+  
   </script>
   
   <style scoped>
