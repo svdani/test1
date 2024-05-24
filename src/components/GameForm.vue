@@ -9,7 +9,7 @@
         <input class="form-control" type="number" id="rows" v-model="boardSize" @input="changeBoardSize">
       </div>
       <div class="input-group">
-        <div class="bubble-box">Player HP:</div>
+        <div class="bubble-box">MAX HP:</div>
         <input class="form-control" type="number" id="playerHP" v-model="playerHP">
       </div>
       <button type="button" class="button" v-on:click="startGame">Start Game</button>
@@ -64,7 +64,14 @@
       axios.post(apiUrl, gameInfo, config)
         .then(async response => {
           console.log('Response:', response.data);
-          router.push("../game");
+          router.push({ 
+            name: 'game', 
+            query: {
+              gameName: this.gameName,
+              boardSize: this.boardSize,
+              playerHP: this.playerHP
+            }
+          });
         })
         .catch(async error => {
           if (error.response && error.response.status === 403) {
@@ -73,10 +80,17 @@
             if (currentGame.HP_max > 0) {
               this.deleteCurrentGame(currentGame.game_ID);
             }
-            router.push("../game");
+            router.push({ 
+              name: 'game', 
+              query: {
+                gameName: this.gameName,
+                boardSize: this.boardSize,
+                playerHP: this.playerHP
+              }
+            });
           } else {
             console.error('Error:', error);
-            console.log('FUCKING ERROR DE MERDA CABRON PORTO MES DE 6 DIES');
+
           }
         });
     },

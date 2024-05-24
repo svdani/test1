@@ -1,59 +1,107 @@
 <template>
-    <main class="container">
-      <GameForm @change-board="updateBoardSize" />
-      <section style="display: flex;">
-        <Board :numRows="boardSize" :numCols="boardSize" />
-        <div>
-          <p>Vida del Jugador: {{ playerHP }}</p>
-          <p>Vida del Enemigo: {{ enemyHP }}</p>
-        </div>
-        <div>
-          <button>Arriba</button>
-          <button>Abajo</button>
-          <button>Izquierda</button>
-          <button>Derecha</button>
-        </div>
-        <div>
-          <h2>Ataques del Jugador</h2>
-          <table>
-            <tr v-for="(attack, index) in playerAttacks" :key="index">
-              <td>{{ attack.name }}</td>
-              <td>{{ attack.damage }}</td>
-            </tr>
-          </table>
-        </div>
-      </section>
-    </main>
-  </template>
-  
-  <script>
-  import router from '@/router';
-  import Board from '../components/Board.vue';
-  import GameCreationView from './GameCreationView.vue';
-  
-  export default {
-    components: {
-      Board
-    },
-    data() {
-      return {
-        playerHP: 100,
-        enemyHP: 100,
-        boardSize: 5,
-        numCols: 0,
-        playerAttacks: [
-          { name: 'Ataque 1', damage: 10 },
-          { name: 'Ataque 2', damage: 20 },
-        ],
+  <div class="container">
+    <div class="status">
+      <div>Jugador HP: {{ playerHP }}</div>
+      <div>Enemigo HP: {{ playerHP }}</div>
+    </div>
+    <div class="board-container">
+      <Board :numRows="boardSize" :numCols="boardSize" />
+    </div>
+    <div class="controls">
+      <div class="direction-buttons">
+        <button>Arriba</button>
+        <button>Abajo</button>
+        <button>Izquierda</button>
+        <button>Derecha</button>
+      </div>
+      <div class="player-attacks">
+        <h2>Ataques del Jugador</h2>
+        <ul>
+          <li v-for="attack in playerAttacks" :key="attack.attack_ID">
+            {{ attack.attack_ID }} - Power: {{ attack.power }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+import Board from '../components/Board.vue';
+
+export default {
+  name: 'GameView',
+  components: {
+    Board,
+  },
+  props: {
+    gameName: String,
+    boardSize: Number,
+    playerHP: Number
+  },
+  data() {
+    return {
+      playerAttacks: [],
+    };
+  },
+  created() {
+    this.fetchPlayerAttacks();
+  },
+  methods: {
+    async fetchPlayerAttacks() {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: { 'Authorization': `Bearer ${token}` }
       };
+
+      try {
+        const response = await axios.get('https://balandrau.salle.url.edu/i3/players/attacks', config);
+        this.playerAttacks = response.data;
+      } catch (error) {
+        console.error('Error fetching player attacks:', error);
+      }
     },
-    mounted() {
-        
-    },
-    methods: {
-      updateBoardSize(data) {
-        this.boardSize = parseInt(data.boardSize);
-      },
-    }
-  };
-  </script>
+  },
+};
+</script>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.status {
+  margin-bottom: 20px;
+}
+
+.board-container {
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+}
+
+.direction-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.direction-buttons button {
+  margin: 5px 0;
+}
+
+.player-attacks {
+  text-align: left;
+  margin-left: 20px;
+}
+</style>
