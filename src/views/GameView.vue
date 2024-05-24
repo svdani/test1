@@ -1,29 +1,30 @@
 <template>
-  <div class="container">
-    <div class="status">
-      <div>Jugador HP: {{ playerHP }}</div>
-      <div>Enemigo HP: {{ playerHP }}</div>
+  <main class="container">
+    <div class="status-bar">
+      <p>Vida del Jugador: {{ playerHP }}</p>
+      <p>Vida del Enemigo: {{ playerHP }}</p>
     </div>
-    <div class="board-container">
-      <Board :numRows="boardSize" :numCols="boardSize" />
-    </div>
+    <Board :numRows="boardSize" :numCols="boardSize" />
     <div class="controls">
-      <div class="direction-buttons">
-        <button>Arriba</button>
-        <button>Abajo</button>
-        <button>Izquierda</button>
-        <button>Derecha</button>
+      <div class="movement-buttons">
+        <button>↑</button>
+        <div class="horizontal-buttons">
+          <button>←</button>
+          <button>→</button>
+        </div>
+        <button>↓</button>
       </div>
-      <div class="player-attacks">
+      <div class="attacks">
         <h2>Ataques del Jugador</h2>
-        <ul>
-          <li v-for="attack in playerAttacks" :key="attack.attack_ID">
-            {{ attack.attack_ID }} - Power: {{ attack.power }}
-          </li>
-        </ul>
+        <table>
+          <tr v-for="(attack, index) in playerAttacks" :key="index">
+            <td>{{ attack.attack_ID }}</td>
+            <td>{{ attack.power }}</td>
+          </tr>
+        </table>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -71,37 +72,79 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  margin: 20px auto;
   padding: 20px;
+  max-width: 900px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.status {
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   margin-bottom: 20px;
-}
-
-.board-container {
-  margin-bottom: 20px;
+  font-size: 18px;
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 10px; 
+  border-radius: 8px;
 }
 
 .controls {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 800px;
+  margin-top: 20px;
+  
 }
 
-.direction-buttons {
+.movement-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.direction-buttons button {
-  margin: 5px 0;
+.horizontal-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
 }
 
-.player-attacks {
-  text-align: left;
+button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #a3a28c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #8e8c72;
+}
+
+.attacks {
   margin-left: 20px;
+}
+
+.attacks h2 {
+  margin-bottom: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
 }
 </style>
