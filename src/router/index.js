@@ -60,7 +60,13 @@ const router = createRouter({
     {
       path: '/game',
       name: 'game',
-      component: () => import('../views/GameView.vue')
+      component: () => import('../views/GameView.vue'),
+      props: route => ({
+        gameName: route.query.gameName,
+        boardSize: parseInt(route.query.boardSize),
+        playerHP: parseInt(route.query.playerHP),
+        enemyHP: parseInt(route.query.enemyHP)
+      })
     }
     ,
     {
