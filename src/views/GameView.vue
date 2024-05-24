@@ -52,7 +52,7 @@ export default {
     async fetchPlayerAttacks() {
       const token = localStorage.getItem('token');
       const config = {
-        headers: { 'Authorization': `Bearer ${token}` }
+        headers: { 'Content-Type': 'application/json', 'Bearer': token, 'Authorization': `Bearer ${token}`}
       };
 
       try {
