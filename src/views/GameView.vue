@@ -1,54 +1,68 @@
 <template>
-  <main class="container">
-    <div class="status-bar">
-      <p>Vida del Jugador: {{ playerHP }}</p>
-      <p>Vida del Enemigo: {{ enemyHP }}</p>
+  <div class="container">
+    <div class="status">
+      <div>Jugador HP: {{ playerHP }}</div>
+      <div>Enemigo HP: {{ playerHP }}</div>
     </div>
-    <Board :numRows="boardSize" :numCols="boardSize" />
+    <div class="board-container">
+      <Board :numRows="boardSize" :numCols="boardSize" />
+    </div>
     <div class="controls">
-      <div class="movement-buttons">
-        <button>↑</button>
-        <div class="horizontal-buttons">
-          <button>←</button>
-          <button>→</button>
-        </div>
-        <button>↓</button>
+      <div class="direction-buttons">
+        <button>Arriba</button>
+        <button>Abajo</button>
+        <button>Izquierda</button>
+        <button>Derecha</button>
       </div>
-      <div class="attacks">
+      <div class="player-attacks">
         <h2>Ataques del Jugador</h2>
-        <table>
-          <tr v-for="(attack, index) in playerAttacks" :key="index">
-            <td>{{ attack.name }}</td>
-            <td>{{ attack.damage }}</td>
-          </tr>
-        </table>
+        <ul>
+          <li v-for="attack in playerAttacks" :key="attack.attack_ID">
+            {{ attack.attack_ID }} - Power: {{ attack.power }}
+          </li>
+        </ul>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script>
+import axios from 'axios';
 import Board from '../components/Board.vue';
 
 export default {
   name: 'GameView',
   components: {
-    Board
+    Board,
   },
   props: {
     gameName: String,
     boardSize: Number,
-    playerHP: Number,
-    enemyHP: Number
+    playerHP: Number
   },
   data() {
     return {
-      playerAttacks: [
-        { name: 'Ataque 1', damage: 10 },
-        { name: 'Ataque 2', damage: 20 },
-      ]
+      playerAttacks: [],
     };
-  }
+  },
+  created() {
+    this.fetchPlayerAttacks();
+  },
+  methods: {
+    async fetchPlayerAttacks() {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: { 'Authorization': `Bearer ${token}` }
+      };
+
+      try {
+        const response = await axios.get('https://balandrau.salle.url.edu/i3/players/attacks', config);
+        this.playerAttacks = response.data;
+      } catch (error) {
+        console.error('Error fetching player attacks:', error);
+      }
+    },
+  },
 };
 </script>
 
@@ -57,75 +71,37 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px auto;
+  text-align: center;
   padding: 20px;
-  max-width: 900px;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.status-bar {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.status {
   margin-bottom: 20px;
-  font-size: 18px;
+}
+
+.board-container {
+  margin-bottom: 20px;
 }
 
 .controls {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 20px;
+  max-width: 800px;
 }
 
-.movement-buttons {
+.direction-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.horizontal-buttons {
-  display: flex;
-  justify-content: space-between;
-  width: 100px;
+.direction-buttons button {
+  margin: 5px 0;
 }
 
-button {
-  margin: 5px;
-  padding: 10px;
-  background-color: #a3a28c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #8e8c72;
-}
-
-.attacks {
-  margin-left: 20px;
-}
-
-.attacks h2 {
-  margin-bottom: 10px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-table, th, td {
-  border: 1px solid black;
-}
-
-th, td {
-  padding: 10px;
+.player-attacks {
   text-align: left;
+  margin-left: 20px;
 }
 </style>

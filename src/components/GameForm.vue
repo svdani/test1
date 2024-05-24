@@ -1,40 +1,36 @@
 <template>
-  <form v-on:submit.prevent>
-    <div class="input-group">
-      <div class="bubble-box">Game Name:</div>
-      <input type="text" id="gameName" v-model="gameName">
-    </div>
-    <div class="input-group">
-      <div class="bubble-box">Board Size:</div>
-      <input class="form-control" type="number" id="rows" v-model="boardSize" @input="changeBoardSize">
-    </div>
-    <div class="input-group">
-      <div class="bubble-box">Player HP:</div>
-      <input class="form-control" type="number" id="playerHP" v-model="playerHP">
-    </div>
-    <div class="input-group">
-      <div class="bubble-box">Enemy HP:</div>
-      <input class="form-control" type="number" id="enemyHP" v-model="enemyHP">
-    </div>
-    <button type="button" class="button" v-on:click="startGame">Start Game</button>
-  </form>
-</template>
-
-<script>
-import axios from 'axios';
-import router from '@/router';
-
-export default {
-  name: 'GameForm',
-  data() {
-    return {
-      gameName: '',
-      boardSize: 0,
-      playerHP: 0,
-      enemyHP: 0,
-    };
-  },
-  methods: {
+    <form v-on:submit.prevent>
+      <div class="input-group">
+        <div class="bubble-box">Game Name:</div>
+        <input type="text" id="playerHP" v-model="gameName">
+      </div>
+      <div class="input-group">
+        <div class="bubble-box">Board Size:</div>
+        <input class="form-control" type="number" id="rows" v-model="boardSize" @input="changeBoardSize">
+      </div>
+      <div class="input-group">
+        <div class="bubble-box">MAX HP:</div>
+        <input class="form-control" type="number" id="playerHP" v-model="playerHP">
+      </div>
+      <button type="button" class="button" v-on:click="startGame">Start Game</button>
+    </form>
+  </template>
+  
+  <script>
+  import axios from 'axios';
+  import router from '@/router';
+  
+  export default {
+    name: 'GameForm',
+    data() {
+      return {
+        size: 0,
+        HP_max: 0,
+        game_ID: ''
+      };
+    },
+    methods: {
+    
     changeBoardSize() {
       this.$emit('change-board', { boardSize: this.boardSize, playerHP: this.playerHP });
     },
@@ -51,16 +47,36 @@ export default {
         HP_max: this.playerHP
       };
 
-      try {
-        const response = await axios.post(apiUrl, gameInfo, config);
-        console.log('Response:', response.data);
-        router.push({
-          path: '/game',
-          query: {
-            gameName: this.gameName,
-            boardSize: this.boardSize,
-            playerHP: this.playerHP,
-            enemyHP: this.enemyHP
+      axios.post(apiUrl, gameInfo, config)
+        .then(async response => {
+          console.log('Response:', response.data);
+          router.push({ 
+            name: 'game', 
+            query: {
+              gameName: this.gameName,
+              boardSize: this.boardSize,
+              playerHP: this.playerHP
+            }
+          });
+        })
+        .catch(async error => {
+          if (error.response && error.response.status === 403) {
+            console.log('Error 403: Ya estás en un juego');
+            let currentGame = await this.getCurrentGame();
+            if (currentGame.HP_max > 0) {
+              this.deleteCurrentGame(currentGame.game_ID);
+            }
+            router.push({ 
+              name: 'game', 
+              query: {
+                gameName: this.gameName,
+                boardSize: this.boardSize,
+                playerHP: this.playerHP
+              }
+            });
+          } else {
+            console.error('Error:', error);
+
           }
         });
       } catch (error) {
