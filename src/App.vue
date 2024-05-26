@@ -34,7 +34,6 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
           <ul v-if="isSubMenuOpen">
             <li><RouterLink to="/loginPlayer">Login Player</RouterLink></li>
             <li><RouterLink to="/playerInfo">Player Info</RouterLink></li>
-            <li><RouterLink to="/joinView">Join</RouterLink></li>
           </ul>
         </li> 
         <!--<li><RouterLink to="/attackManagement">Attack Management</RouterLink></li>  -->
@@ -51,7 +50,6 @@ defineExpose({ isMenuOpen, isSubMenuOpen, toggleMenu, toggleAbout });
           <ul v-if="isSubMenuOpen">
             <li><RouterLink to="/gameCreation">Create Game</RouterLink></li>
             <li><RouterLink to="/gameAvailable">Available Games</RouterLink></li>
-            <li><RouterLink to="/gameFinder">Game Finder</RouterLink></li>
             <li><RouterLink to="/gameRecord">Game Record</RouterLink></li>
 
           </ul>

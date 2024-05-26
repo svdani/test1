@@ -5,16 +5,13 @@
   </header>
   
   <main>
-
     <section class="caja_gris " >
       <span style="color:#FFC700; font-size:20px;" >{{ coins !== null ? `Coins: ${coins} $` : '' }}</span>
     </section>
 
     <section class="caja_gris caja_sellattack">
       <BackpackTable :attacks="filteredAttacksBag" style="margin-right: 5px;"/>
- 
       <StoreTable :attacks="filteredAttacksSell" style="margin-left: 5px;"/>
-      
     </section>
   </main>
 
@@ -23,8 +20,6 @@
 <script>
 import BackpackTable from '../components/BackpackTable.vue';
 import StoreTable from '../components/StoreTable.vue';
-
-
 import axios from 'axios';
 
 export default {
