@@ -64,8 +64,7 @@ const router = createRouter({
       props: route => ({
         gameName: route.query.gameName,
         boardSize: parseInt(route.query.boardSize),
-        playerHP: parseInt(route.query.playerHP),
-        enemyHP: parseInt(route.query.enemyHP)
+        playerHP: parseInt(route.query.playerHP)
       })
     }
     ,

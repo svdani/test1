@@ -2,7 +2,7 @@
   <main class="container">
     <div class="status-bar">
       <p>Vida del Jugador: {{ playerHP }}</p>
-      <p>Vida del Enemigo: {{ enemyHP }}</p>
+      <p>Vida del Enemigo: {{ playerHP }}</p>
     </div>
     <Board :numRows="boardSize" :numCols="boardSize" />
     <div class="controls">
@@ -18,8 +18,8 @@
         <h2>Ataques del Jugador</h2>
         <table>
           <tr v-for="(attack, index) in playerAttacks" :key="index">
-            <td>{{ attack.name }}</td>
-            <td>{{ attack.damage }}</td>
+            <td>{{ attack.attack_ID }}</td>
+            <td>{{ attack.power }}</td>
           </tr>
         </table>
       </div>
@@ -28,27 +28,42 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Board from '../components/Board.vue';
 
 export default {
   name: 'GameView',
   components: {
-    Board
+    Board,
   },
   props: {
     gameName: String,
     boardSize: Number,
-    playerHP: Number,
-    enemyHP: Number
+    playerHP: Number
   },
   data() {
     return {
-      playerAttacks: [
-        { name: 'Ataque 1', damage: 10 },
-        { name: 'Ataque 2', damage: 20 },
-      ]
+      playerAttacks: [],
     };
-  }
+  },
+  created() {
+    this.fetchPlayerAttacks();
+  },
+  methods: {
+    async fetchPlayerAttacks() {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: { 'Content-Type': 'application/json', 'Bearer': token, 'Authorization': `Bearer ${token}`}
+      };
+
+      try {
+        const response = await axios.get('https://balandrau.salle.url.edu/i3/players/attacks', config);
+        this.playerAttacks = response.data;
+      } catch (error) {
+        console.error('Error fetching player attacks:', error);
+      }
+    },
+  },
 };
 </script>
 
@@ -71,6 +86,9 @@ export default {
   width: 100%;
   margin-bottom: 20px;
   font-size: 18px;
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 10px; 
+  border-radius: 8px;
 }
 
 .controls {
@@ -78,6 +96,7 @@ export default {
   justify-content: space-between;
   width: 100%;
   margin-top: 20px;
+  
 }
 
 .movement-buttons {
