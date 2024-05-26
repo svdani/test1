@@ -3,16 +3,19 @@
   <header>
     <h3 class="titelPage">Sell Attacks</h3>
   </header>
+  
   <main>
-    <div class="caja_gris caja_sellattack">
+
+    <section class="caja_gris " >
+      <span style="color:#FFC700; font-size:20px;" >{{ coins !== null ? `Coins: ${coins} $` : '' }}</span>
+    </section>
+
+    <section class="caja_gris caja_sellattack">
       <BackpackTable :attacks="filteredAttacksBag" style="margin-right: 5px;"/>
-      <div class="buttons-container">
-       <!-- <button class="btn btn_move success">&lt;&lt;</button>
-        <button class="btn btn_move success">&gt;&gt;</button>  --> 
-      </div>
+ 
       <StoreTable :attacks="filteredAttacksSell" style="margin-left: 5px;"/>
-      <div class="coins">Coins: 27800</div> 
-    </div>
+      
+    </section>
   </main>
 
 </template>
@@ -20,6 +23,8 @@
 <script>
 import BackpackTable from '../components/BackpackTable.vue';
 import StoreTable from '../components/StoreTable.vue';
+
+
 import axios from 'axios';
 
 export default {
@@ -29,16 +34,23 @@ export default {
   },
   data() {
     return {
+      coins: null,
       attackLista: [],
       filteredAttacksBag: [], // Lista de ataques en la mochila
       filteredAttacksSell: [] // Lista de ataques en venta
     };
   },
+  mounted() {
+      this.coins = localStorage.getItem('coins');
+  },
+
   created() {
     this.fetchAttackPlayerData();
   },
   methods: {
     fetchAttackPlayerData() {
+
+
       console.log("fetchAttackPlayerData");
       const token = localStorage.getItem('token');
       const apiUrl = 'https://balandrau.salle.url.edu/i3/players/attacks';
@@ -93,11 +105,7 @@ export default {
       margin: 5px 0;
 
     }
-    .coins {
-        position: absolute;
-        top: -1px; 
-        right: 10px;
-    }
+    
 
 
   </style>

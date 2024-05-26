@@ -48,6 +48,7 @@ export default {
         .then(response => {
           if (response.status === 200) {
             this.playerInfo = response.data;
+            localStorage.setItem("coins", this.playerInfo.coins);
           } else {
             console.error('Error al obtener datos del jugador:', response.statusText);
           }
